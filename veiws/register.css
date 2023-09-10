@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap");
+:root {
+    --bgColor: white;
+    --inputColor: black;
+    --outlineColor: dodgerblue;
+    --beamColor: yellow;
+    --spacer: 1rem;
+}
+body.show-password {
+    --bgColor: black;
+    --inputColor: rgb(157, 156, 216);
+    --outlineColor: var(--beamColor);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+}
+.container ,
+.secondPage{
+    display: flex;
+    text-align: center;
+    border-radius: 10px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    transition: height .2s ease;
+}
+.container{
+}
+.both{
+    overflow: hidden;
+    transition: transform .5s ease, height .2s ease;
+    position: relative;
+    z-index: 100;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+/* .both .container {
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+.both .active .container{
+    transition: none;
+    transform: translateX(-500px);
+}
+.both .secondPage{
+    position: absolute;
+    transform: translateX(500px);
+}
+.both .active .secondPage{
+    transition: transform .18s ease;
+    transform: translateX(0);
+} */
+.secondPage .back{
+    color: #fa7a00;
+    margin-top: 18px;
+    margin-left: 20px;
+    padding: 6px 12px;
+    border-radius: 9px;
+    background-color: rgb(0 0 0);
+    border: 0;
+    font-size: 17px;
+    cursor: pointer;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.back:hover{
+    padding: 7px 14px;
+    font-size: 19px;
+}
+.img{
+    text-align: center;
+    margin-top: 50px;
+}
+.content{
+    text-align: left;
+}
+.content img{
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+.content h2{
+    color: azure;
+    font-family: "Yeon Sung";
+    font-size: 2em ;
+    text-align: center;
+}
+.content h3{
+    color: azure;
+    font-family: "Yeon Solar";
+    font-size: 18px;
+    margin: 5px 40px;
+    text-align: center;
+}
+.content h2 span,
+.content h3 span{
+    background: linear-gradient(to right, #ff8a00 0%, #dd4c4f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.line{
+    content: "";
+    display: block;
+    height: 2px;
+    width: 40%;
+    background-color: #efeef040;
+    position: relative;
+    top: 20px;
+    left: 0;
+}
+.personalRegister{
+    margin-left: 55px;
+}
+.linef{
+    display: flex;
+    margin-left: 55px;
+}
+.content .mainlabel{
+    font-size: 19px;
+    color: azure;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 30px;
+    margin-left: 55px;
+}
+.content .maininput{
+    margin-left: 55px;
+    width: 320px;
+    height: 30px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.gxid p{
+    margin: -8px 55px 8px 55px;
+    color: rgb(189, 214, 253);
+}
+label:focus,
+input:focus{
+  outline: 3px solid var(--outlineColor);
+  outline-offset: 2px;
+}
+.btn{
+    width: 90%;
+    height: 45px;
+    background: #0392ff;
+    font-size: 1.1em;
+    font-weight: 500;
+    border: none;
+    border-radius: 9px;
+    margin: 20px 0px 20px 0px;
+}
+.lobtn{
+    transition: 0.3s;
+    cursor: pointer;
+}
+.lobtn a {
+    text-decoration: none;color: #fff;
+}
+.login-register{
+    color: #ffffff;
+    font-size: 1em;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+.login-register p a{
+    color: #f2f5f8;
+    text-decoration: none;
+    font-weight: 600;
+}
+.login-register p a:hover{
+    text-decoration: underline;
+    color: #eedc3d;
+    filter: drop-shadow(0 0 5px#eedc3d);
+}
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /*Divide value of min-width by 2 */
+    /* background-color: #333; Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 100; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.8);
+    font-family: "Yeon Sung";
+}
+  /* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+  
+   /* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+  
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+  
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+  
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+.iconlogin{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.iconlogin img{
+    height: 60px;
+    width: 60px;
+    border-radius: 53%;
+    padding: 10px;
+    margin: 0;
+    cursor: pointer;
+}
+.otklabel{
+    font-size: 19px;
+    color: azure;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 30px;
+}
+.otkform-group-field select{
+    margin-top: 10px;
+    width: 370px;
+    height: 30px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+input:focus {
+    outline-offset: 1px;
+}
+.divvv{
+    position: relative;
+}
+[id=eyeball] {
+    --size: 1.25rem;
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    top: 40%;
+    border: none;
+    background-color: transparent;
+    transform: translateY(-50%);
+    margin-left: -30px;
+}
+[id=eyeball]:active {
+    transform: translateY(calc(-50% + 1px));
+}
+.eye {
+    width: var(--size);
+    height: var(--size);
+    border: 2px solid var(--inputColor);
+    border-radius: calc(var(--size) / 1.5) 0;
+    transform: rotate(45deg);
+}
+.eye:before, .eye:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    border-radius: 100%;
+}
+.eye:before {
+    width: 35%;
+    height: 35%;
+    background-color: var(--inputColor);
+} 
+.eye:after {
+    width: 65%;
+    height: 65%;
+    border: 2px solid var(--inputColor);
+    border-radius: 100%;
+} 
+[id=beam] {
+    position: absolute;
+    top: 40%;
+    right: 10.75rem;
+    -webkit-clip-path: polygon(100% 50%, 100% 50%, 0 0, 0 100%);
+            clip-path: polygon(30% 70%, 100% 50%, 0 0, 0 100%);
+    width: 100vw;
+    height: 25vh;
+    z-index: 1;
+    mix-blend-mode: multiply;
+    transition: transform 200ms ease-out;
+    transform-origin: 100% 50%;
+    transform: translateY(-50%) rotate(var(--beamDegrees, 0));
+    pointer-events: none;
+}
+.show-password [id=beam] {
+    background: var(--beamColor);
+}
+.validator {
+    margin-top: 20px;
+    margin-left: 55px;
+    width: 323px;
+    position: relative;
+    height: 110px;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+    padding: 7px 20px 0px;
+    background-color: #121726;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+  
+.validator p {
+    opacity: 0.6;
+    transition: all 0.3s ease-out;
+}
+  
+.validator p span {
+    font-size: 17px;
+    color: #fff;
+    margin-left: 35px;
+    font-weight: 500;
+}
+.validator p i {
+    position: absolute;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    line-height: 26px;
+    font-size: 15px;
+    border-radius: 50%;
+    color: #ffffff;
+}
+.fa-check {
+    opacity: 0;
+}
+.fa-times {
+    opacity: 1;
+}

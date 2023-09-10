@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameXplore | Register</title>
+    <link rel="stylesheet" href="/veiws/register.css">
+</head>
+<body>
+<div>
+    <video autoplay muted loop id="myVideo">
+        <source src="/static/video_games_-_89894 (Original).mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="both">
+    <div class="secondPage">
+        <a href="/register">
+        <button class="back"> back </button></a>
+        <div class="content">
+            <div class="img">
+                <a href="/home"><img src="/static/5309fe6da8594cc0b790de80852fd5d1.png"></a>
+            </div>
+            <h2>Create your <span>GX</span> Account</h2>
+            <form method="post" action="/register_last">
+                <label for="mail" class="mainlabel"> Email </label><br>
+                <input class="maininput" type="email" id="mail" name="username" required><br>
+                <div class="gxid">
+                    <label for="id" class="mainlabel"> GX Id </label><br>
+                    <input class="maininput gxxx"  type="text" id="id" name="name" required minlength="8"><br>
+                    <p>This is how your friends can find you in the app or in GX Games.<br>Your GX ID must be 8-16 characters</p>
+                </div>
+                <div class="form_item">
+                    <label for="pass" class="mainlabel">Password</label><br>
+                    <div class="divvv">
+                        <input oninput="textChange()" onclick="closeNav()" class="maininput" id="password" minlength="8" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-lpignore="true" type="password" name="password" required>
+                        <button type="button" id="eyeball">
+                            <div class="eye"></div>
+                        </button>
+                        <div id="beam"></div>
+                    </div>
+                </div>
+                <div class="validator" id="validator">
+                    <p id="capital">
+                        <i class="fas fa-times"></i>
+                        <i class="fas fa-check"></i>
+                        <span>Upper Case</span>
+                    </p>
+                    <p id="special-char">
+                        <i class="fas fa-times"></i>
+                        <i class="fas fa-check"></i>
+                        <span>Special Character</span>
+                    </p>
+                    <p id="number">
+                        <i class="fas fa-times"></i>
+                        <i class="fas fa-check"></i>
+                        <span>Number</span>
+                    </p>
+                    <p id="more-than-8">
+                        <i class="fas fa-times"></i>
+                        <i class="fas fa-check"></i>
+                        <span>More than 8 characters</span>
+                    </p>
+                </div>
+                <!-- <a href="/main.html"> -->
+                <button type="submit" class="btn lobtn" onclick="myFunction()">Create Account</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="/veiws/register.js"></script>
+<script src='https://kit.fontawesome.com/1c2c2462bf.js'></script>
+
+</body>
+</html>

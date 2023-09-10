@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/veiws/avatar.css">
+    <title>GameXplore | Avatar</title>
+</head>
+<body>
+    <div class="container">
+        <div class="divleft">
+            <h1 class="welcome">Welcome To <span class="text"></span> Account</h1>
+            <h1 class="welcome1">Change Your Avatar Here</h1>
+            <img src="/static/5309fe6da8594cc0b790de80852fd5d1.png" alt="Profile Pic" title="Avatar">
+            <h1 class="gxid"><%= gxid %></h1>
+            <div class="btn">
+                <div class="deldiv">
+                    <button class="delbtn">
+                        <a href="#">Delete</a>
+                    </button>
+                </div>
+                <div class="deldiv">
+                    <button class="delbtn">
+                        <a href="#">Submit</a>
+                    </button>
+                </div>
+            </div>
+            <a href="#" class="learn">Learn more</a>
+        </div>
+        <div class="divright">
+            <div class="browser">
+                <h2><a href="https://www.bing.com/images/search?q=image+for+gamer&form=HDRSC3&first=1" class="learn" target="_blank">Browser Image</a></h2>
+            </div>
+            <div class="dpupload">
+                <form action="/avatar" enctype = "multipart/form-data" method = "post">
+                    <div class="pi"><label for="avatar">Choose a Profile Picture:</label></div>
+                    <div class="oip">
+                        <!-- <label>Select Photo</label> -->
+                        <input id="avatar" type="file" name="userFile"  accept="image/png, image/jpeg" />
+                    </div>
+                    <div class="pp"><img id="image" class="output" /></div>
+                    <button>Save</button>
+                </form>
+                <form action="/avatar" method="post"> 
+                    <label>Choosen a Profile Avatar:</label>
+                    <div class="choosenAvatar">
+                        <div class="slide1">
+                            <div class="slimg">
+                                <label>
+                                    <div class="ff"><input type="radio" name="avatar" value="Gavt3.jpg" checked></div>
+                                    <img src="/static/Gavt3.jpg" alt="avatar" title="Avatar">
+                                </label>
+                                <!-- <div class="ff"><input type="checkbox" id="g3"></div>
+                                <label for="g3"></label> -->
+                            </div>
+                            <div class="slimg">
+                                <label>
+                                    <div class="ff"><input type="radio" name="avatar" value="Bavt3.jpg"></div>
+                                <img src="/static/Bavt3.jpg" alt="avatar" title="Avatar">
+                                </label>
+                            </div>
+                            <div class="slimg">
+                                <label>
+                                    <div class="ff"><input type="radio" name="avatar" value="Gavt2.jpg"></div>
+                                    <img src="/static/Gavt2.jpg" alt="avatar" title="Avatar">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="slide1">
+                            <div class="slimg">
+                                <label>
+                                    <div class="ff"><input type="radio" name="avatar" value="Bavt1.jpg" ></div>
+                                    <img src="/static/Bavt1.jpg" alt="avatar" title="Avatar">
+                                </label>
+                               
+                            </div>
+                            <div class="slimg">
+                                <label>
+                                    <div class="ff"><input type="radio" name="avatar" value="Gavt1.jpg"></div>
+                                    <img src="/static/Gavt1.jpg" alt="avatar" title="Avatar">
+                                </label>
+                                
+                            </div>
+                            <div class="slimg">
+                                <label>
+                                    <div class="ff"><input type="radio" name="avatar" value="Bavt2.jpg"></div>
+                                    <img src="/static/Bavt2.jpg" alt="avatar" title="Avatar" >
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <button>Save</button>
+                </form>
+            </div>
+            <div class="choosenavatar">
+
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/typed.js@2.0.14/dist/typed.umd.js"></script>
+    <script src="/veiws/avatar.js"></script>
+</body>
+</html>

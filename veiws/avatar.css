@@ -1,0 +1,188 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Yeon+Sung&display=swap');
+body{
+    background: url(/static/avatarbg.jpeg);
+    background-size: cover;
+    
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    gap: 80px;
+    color:#f2f2f2;
+}
+.divleft,.divright{
+    border-radius: 15px;
+    box-shadow: 2px 8px 4px  rgba(0, 0, 0, 0.25);
+    min-width: 400px;
+    height: 608px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.welcome{
+    color: #DE8755;
+    text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: "Indie Flower";
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 73.333% */
+    letter-spacing: -0.6px;
+    word-spacing: 1px;
+    text-transform: capitalize;
+}
+.text{
+    font-weight: 800;
+    font-size: 40px;
+}
+.welcome1{
+    color: #DE8755;
+    text-align: center;
+    font-family: "Indie Flower";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 73.333% */
+    letter-spacing: -0.6px;
+    text-transform: capitalize;
+}
+.gxid{
+    font-family: "Yeon Sung";
+    background: linear-gradient(to right, #ff8a00 0%, #dd4c4f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1.1px;
+}
+.divleft img{
+    border: none;
+    border-radius: 50%;
+    height: 70px;
+    width: 70px;
+}
+
+.deldiv{
+    width: 182px;
+    height: 42px;
+    border-radius: 15px;
+    background: rgba(33, 29, 29, 0.76);
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    /* align-items: center; */
+}
+
+.delbtn {
+    background: transparent;
+    color: #a53e3e;
+    text-align: center;
+    font-family: "Indie Flower";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 73.333% */
+    letter-spacing: -0.6px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 15px;
+}
+.deldiv + div {
+    background: #181514;
+}
+.delbtn a{
+    text-decoration: none;
+    color: #f2f2f2;
+}
+.learn{
+    color: #36A4F4;
+    text-align: center;
+    font-family: "Indie Flower";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px; /* 110% */
+    letter-spacing: 0.4px;
+    text-decoration: none;
+}
+
+.browser{
+    width: 236px;
+    height: 57px;
+    border-left: 5px solid #000;
+    background: rgba(217, 217, 217, 0.00);
+}
+.browser h2{
+    font-size: 20px ;
+    cursor: pointer;
+}
+.output {
+    overflow: scroll;
+    max-height: 100px;
+    border-radius: 20px;
+}
+.pp{
+    margin:5px ;
+}
+.dpupload  label {
+    display: block;
+    font:
+      1.1rem 'Fira Sans',
+      sans-serif;
+    text-align: left;
+    margin-top: 10px;
+}
+.choosenAvatar{
+    display: flex;
+    flex-direction: column;
+    margin:5px 22px;
+}
+.choosenAvatar .slide1{
+    margin: 10px 2px;
+    display: flex;
+    flex-direction: row;
+}
+.choosenAvatar img{
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.slide1 .slimg{
+    height: 100px;
+    width: 100px;
+    position: relative;
+    padding: 2px 4px;
+}
+.ff{
+    position: absolute;
+    bottom: 0;
+}   
+.slimg label{
+    height: 100%;
+    width: 100%;
+}
+
+input[type="radio"]:after {
+    content: ' ';
+    position: relative;
+    left: 40%;
+    top: 20%;
+    width: 15%;
+    height: 40%;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(50deg);
+    display: none;
+}
+input[type="radio"]:checked:after {
+    display: block;
+}

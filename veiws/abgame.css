@@ -1,0 +1,113 @@
+body{
+    background-color:cornsilk;
+    background-size: cover;
+    object-fit: cover;
+}
+
+.Container{
+    margin-top: 50px;
+    margin-left: 50px;
+}
+.name{
+    text-align: center;
+    font-size: 55px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 50px;
+}
+
+.basicsection{
+    display: flex;
+    gap: 100px;
+}
+.rating{
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.img-section img{
+    height: 500px;
+    width: 500px;
+    border-radius: 10px;
+}
+.Discrip{
+    margin-top: 10px;
+}
+.dold{
+    margin-top: 55px;
+    color: #162938;
+    font-size: 32px;
+    width: 220px;
+    cursor: pointer;
+    padding: 8px 20px;
+    margin-left: 38px;
+    border-radius: 20px;
+    box-shadow: 0 0 1rem #162938;
+    animation: iconoffer 2s ease-in-out infinite;
+    outline: none;
+    z-index: 0;
+}
+@keyframes iconoffer{
+    0%{
+        transform: rotateX(0deg);
+    }
+    25%{
+        transform: rotateX(30deg);
+    }
+    50%{
+        transform: rotateX(0deg);
+    }
+    75%{
+        transform: rotateX(-30deg);
+    }
+    100%{
+        transform: rotateX(0deg);
+    }
+}
+.dold::before{
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+    border-radius: 60px;
+}
+.dold:active {
+    color: #000
+}
+
+.dold:active:after {
+    background: transparent;
+}
+
+.dold:hover:before {
+    opacity: 1;
+}
+
+.dold:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background: #111; */
+    left: 0;
+    top: 0;
+    border-radius: 60px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameXplore | Login</title>
+    <link rel="stylesheet" href="/veiws/login.css">
+</head>
+<body>
+    <video autoplay muted loop id="myVideo">
+        <source src="/static/video_games_-_89894 (Original).mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="maincon">
+    <div class="container">
+        <!-- <i style="--clr:#245ff1;"></i>
+		<i style="--clr:#ff0057;"></i>
+		<i style="--clr:#b744ff;"></i> -->
+        <form action="" method="post">
+            <div class="content">
+                <img src="/static/5309fe6da8594cc0b790de80852fd5d1.png">
+                <h2>Sign in to your <span>GX</span> Account</h2>
+                <div class="iconlogin">
+                    <a href="https://accounts.google.com/v3/signin/identifier?dsh=S1192002006%3A1689331763066270&ifkv=AeDOFXi7BWdJcRGSIt-fVx0KnEjQYVPF6ok4izkMb1lvfXz4enDY-whH9jA8naay0X5-se3IQwwv&flowName=GlifWebSignIn&flowEntry=ServiceLogin" target="_blank"><img src="/static/google.jpeg" title="Google" href="#"></a>
+                    <a href="https://store.steampowered.com/login/?steamtv" target="_blank"><img src="/static/steam.jpeg" title="Steam" href="#"></a>
+                    <a target="_blank" href="https://my.account.sony.com/central/signin/?duid=0000000700090100f6e825092a29be8c874827ac4526405bceabd308e3abbd83e0a036baf263e8c6&response_type=code&client_id=e4a62faf-4b87-4fea-8565-caaabb3ac918&scope=web%3Acore&access_type=offline&state=744839d03a715288757435fc282136e8c8fe558bdad562c7c59a8c0298295f27&service_entity=urn%3Aservice-entity%3Apsn&ui=pr&smcid=web%3Apdc&redirect_uri=https%3A%2F%2Fweb.np.playstation.com%2Fapi%2Fsession%2Fv1%2Fsession%3Fredirect_uri%3Dhttps%253A%252F%252Fio.playstation.com%252Fcentral%252Fauth%252Flogin%253Flocale%253Den_IN%2526postSignInURL%253Dhttps%25253A%25252F%25252Fwww.playstation.com%25252Fen-in%25252Fplaystation-network%25252F%2526cancelURL%253Dhttps%25253A%25252F%25252Fwww.playstation.com%25252Fen-in%25252Fplaystation-network%25252F%26x-psn-app-ver%3D%2540sie-ppr-web-session%252Fsession%252Fv5.30.0&auth_ver=v3&error=login_required&error_code=4165&error_description=User+is+not+authenticated&no_captcha=false&cid=4eb08233-0eca-4c02-9935-d77d83fe7976#/signin/ca?entry=ca"><img src="/static/ps.jpeg" title="PlatStation" href="#"></a>
+                    <a target="_blank" href="https://signup.live.com/signup?wa=wsignin1.0&rpsnv=13&rver=7.3.6963.0&wp=MBI_SSL&wreply=https:%2f%2faccount.xbox.com%2fen-in%2faccountcreation%3frtc%3d1%26csrf%3diRRDbBsXHWOzqJoxX9GqJOfUcAQCvJVJSNVhpu9YR0ntJtPfRjwCMjSg4qE1UQC4yx6KIvX4cVItbVhM5kW-6bAyA7o1&id=292543&aadredir=1&contextid=8369C2F0524F361B&bk=1602012918&uiflavor=web&lic=1&mkt=en-in&lc=1033&uaid=3ba71ae4427e4c300da204fc26106240"><img src="/static/xbox.jpeg" title="Xbox" href="#"></a>
+                    <a target="_blank" href="https://www.facebook.com/"><img src="/static/fb.jpeg" title="Facebook" href="#"></a>
+                </div>
+                <div class="linef">
+                    <div class="line"></div>
+                    <div style="margin: 10px 5px 0px 5px;color: #fff;">or</div>
+                    <div class="line"></div>
+                </div> 
+                <div style="height: 10px;"></div>
+        </form>
+        <form class="personalLogin">
+                <label for="phone" class="mainlabel">Phone OR Email </label><br>
+                <input class="maininput" type="text" id="phone" name="phone" required><br>
+                <label for="pass" class="mainlabel">Password</label><br>
+                <div class="divvv">
+                    <input class="maininput" id="YourPassword" type="password" name="password" required>
+                <div class="showw"></div>
+                </div>
+                <div class="strengthMeter"></div>
+                <div class="remember-forget">
+                    <label><input type="checkbox" required> Remember me <a href="#"> Forgot Password</a></label>
+                </div>
+                <button type="submit" class="btn lobtn" onclick="myFunction()">SIGN IN</button>
+                <div class="login-register">
+                    <p>Don't have an account?
+                        <a href="/register" class="register-link">Register</a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+    <div id="snackbar">Login Succesfully..</div>
+    <script src="/veiws/login.js"></script>
+</body>
+</html>

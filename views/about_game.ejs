@@ -1,0 +1,43 @@
+<%- include("partials/header"); -%>
+<head>
+    <title>GameXplore | <%= gametitle%></title>
+    <link rel="stylesheet" href="/veiws/abgame.css">
+</head>
+<div class="Container">
+    <h1 class="name"> <%= gametitle %> </h1>
+    <div class="main-content">
+        <div class="basicsection">
+            <div class="img-section">
+                <img src="<%= gamemainimage %>">
+            </div>
+            <div class="content">
+                <div class="rating">
+                    <div>Release date:</div>
+                    <div><%= gamerelease %></div>
+                </div>
+                <div class="Discrip">
+                    <h2> <%= gamedeck %></h2>
+                </div>
+                <div class="down">
+                    <button class="dold"> Download</button>
+                </div>
+            </div>
+        </div>
+        <div class="secondsection">
+            
+            <div class="gamedetail">
+                <div class="div"> <%= gamedisp %> </div>
+            </div>
+        </div>
+        <div class="similargame">
+            <h1>Similar game:</h1>
+            <div class="simi">
+                <h2> <%= gamesimilar %> </h2>
+                <button class="btn"><a href=" <%= gamesemiurl %> ">TRY NOW</a></button>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<%- include("partials/footer"); -%>
