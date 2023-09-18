@@ -60,12 +60,11 @@ app.get('/',(req, res) =>{
 });
 
 app.get("/home",(req, res) =>{
-  // if(req.isAuthenticated()) {
+  if(req.isAuthenticated()) {
     res.render("home",{gxidname:"Shivam"});
-  // }else{
-    // res.render("login");
-  // }
-  // res.render("home");
+  }else{
+    res.render("login");
+  }
   console.log(req.session);
   console.log(req.user);
 });
@@ -143,7 +142,7 @@ app.post('/register',  (req, res) =>{
 
 app.get("/logout",(req, res) => {
   req.logout();
-  req.redirect("/"); 
+  res.redirect("/"); 
 });
 
 app.post('/register_last',async (req, res) =>{
@@ -158,7 +157,7 @@ app.post('/register_last',async (req, res) =>{
       password: req.body.password,
       gxidnames: req.body.name
     });
-    user.save()
+    await user.save()
     .then(user=>{
       console.log(user);
     }).catch(err=>{
@@ -168,9 +167,9 @@ app.post('/register_last',async (req, res) =>{
     console.log("Sent: Register_last Page Post Request");
 })
 
-app.post("/login",passport.authenticate("local",{
-  successRedirect:"home",
-}));
+app.post('/login', passport.authenticate("local", { failureRedirect: '/login' }), (req, res) => {
+  res.redirect('/');
+});
 
 const storage = multer.diskStorage({
   destination:  (req, file, callback) => {
