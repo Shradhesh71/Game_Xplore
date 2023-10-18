@@ -2,13 +2,24 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const fs = require('fs');
-const port = 8080;
-const {connectmongoose, Gameuser} = require("./database.js");
-const {intinalizingPassport} = require("./passport.js");
-const session = require("express-session");
-const passport = require('passport');
-const axios = require("axios");
-const passportlocalmongoose = require('passport-local-mongoose');
+const port = process.env.PORT || 8000;
+const cookiePaser = require("cookie-parser");
+const mongoose = require('mongoose');
+const {
+    checkForAuthenticationCookie,
+  } = require("./middlewares/authentication");
+
+// const Gameuser = require("../models/user");
+
+const userRoute = require("./routes/user");
+
+
+// const {connectmongoose, Gameuser} = require("./database.js");
+// const {intinalizingPassport} = require("./passport.js");
+// const session = require("express-session");
+// const passport = require('passport');
+// const axios = require("axios");
+// const passportlocalmongoose = require('passport-local-mongoose');
 // const GoogleStrategy = require('passport-google-oauth20').Strategy;
 // const findOrCreate = require('mongoose-findorcreate');
 // const bodyparser = require('body-parser');
@@ -16,84 +27,100 @@ const passportlocalmongoose = require('passport-local-mongoose');
 const _ = require("lodash");
 // const {storage,uploadfile} = require("./multer.js");
 const multer = require('multer');
-const mongostore = require("connect-mongo");
+// const mongostore = require("connect-mongo");
 
-connectmongoose();
 
-app.use('/static',express.static('static'));
-app.use('/veiws',express.static('veiws'));// for serving static files
-app.use(express.urlencoded({extended: true}));  // help to form data to this file
+mongoose.connect('mongodb+srv://shradesh71:newone71@cluster0.4tegtua.mongodb.net/gameusers?retryWrites=true')
+    .then(()=>{
+        console.warn("connect...");
+    })
+    .catch((error)=>{
+        console.log(error);
+    });
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname,'views')); // set the veiw directory
+    
 
-app.use(session({   //Save login session
-  secret: "ShradheshJain!!!",
-  resave: false,
-  saveUninitialized: true,
-  store: mongostore.create({ mongoUrl:"mongodb+srv://shradesh71:newone71@cluster0.4tegtua.mongodb.net/gameusers?retryWrites=true",collectionName: "sessions" }),
-  cookie:{ 
-    maxAge: 1000*60*60 // 1 hours
-  }
-}));
+app.use('/static',express.static('static'));
+app.use('/veiws',express.static('veiws'));// for serving static files
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(express.urlencoded({extended: false}));
+app.use(cookiePaser());
+app.use(checkForAuthenticationCookie("token"));
 
-intinalizingPassport(passport);
+
+// app.use(session({   //Save login session
+//   secret: "ShradheshJain!!!",
+//   resave: false,
+//   saveUninitialized: true,
+//   store: mongostore.create({ mongoUrl:"mongodb+srv://shradesh71:newone71@cluster0.4tegtua.mongodb.net/gameusers?retryWrites=true",collectionName: "sessions" }),
+//   cookie:{ 
+//     maxAge: 1000*60*60 // 1 hours
+//   }
+// }));
+
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+// userSchema.plugin(passportlocalmongoose);  // to hash and set a password
+// userSchema.plugin(findOrCreate);
+
+// intinalizingPassport(passport);
 
 const countrycodes =[];
-// const gxidnames=[];
 
-// plugin();
+// const uploadDirectory = './uploads';
+// if (!fs.existsSync(uploadDirectory)) {
+//   fs.mkdirSync(uploadDirectory);
+// };
 
-const gxidnames ="";
 
-const uploadDirectory = './uploads';
-if (!fs.existsSync(uploadDirectory)) {
-  fs.mkdirSync(uploadDirectory);
-};
-
-app.get('/',(req, res) =>{
-    res.render("main_F");
+app.get('/',async (req, res) =>{
+  res.render("main_F",{
+    user: req.user,
+  });
     console.log("Sent: Main_F Page");
 });
 
-app.get("/home",(req, res) =>{
-  if(req.isAuthenticated()) {
-    res.render("home",{gxidname:"Shivam"});
-  }else{
-    res.render("login");
-  }
-  console.log(req.session);
-  console.log(req.user);
-});
+// app.get("/home",(req, res) =>{
+//   if(req.isAuthenticated()) {
+//     res.render("home",{gxidname:"Shivam"});
+//   }else{
+//     res.render("login");
+//   }
+//   console.log(req.session);
+//   console.log(req.user);
+// });
 
-app.get('/login',(req, res) =>{
-    res.status(200).render("login")
-    console.log("Sent: Login page");
-});
+app.use("/user", userRoute);
 
-app.get('/register',(req,res) =>{
-  res.status(200).render("register");
-  console.log("Sent: Register Page");
-});
 
-app.get('/register_last',(req,res) =>{
-  if(countrycodes.length==0){
-    res.redirect("/register");
-    console.log("Sent: Register_last to Register Page");
-  }else{
-    res.status(200).render("register2");
-    console.log("Sent: Register_last_Page");
-  }
-});
+// app.get('/login',(req, res) =>{
+//     res.status(200).render("login")
+//     console.log("Sent: Login page");
+// });
 
-app.get("/avatar/:gxid",(req, res) =>{
-  const gxid = _.capitalize(req.params.gxid);
-  console.log("Got avatar gxid: " + gxid);
-  res.render("avatar",{"gxid": gxid});
-});
+// app.get('/user/register',(req,res) =>{
+//   res.status(200).render("register");
+//   console.log("Sent: Register Page");
+// });
+
+// app.get('/register_last',(req,res) =>{
+//   if(countrycodes.length==0){
+//     res.redirect("/register");
+//     console.log("Sent: Register_last to Register Page");
+//   }else{
+//     res.status(200).render("register2");
+//     console.log("Sent: Register_last_Page");
+//   }
+// });
+
+// app.get("/avatar/:gxid",(req, res) =>{
+//   const gxid = _.capitalize(req.params.gxid);
+//   console.log("Got avatar gxid: " + gxid);
+//   res.render("avatar",{"gxid": gxid});
+// });
 
 app.get("/studios",(req,res) =>{
   res.render("studios");
@@ -135,41 +162,41 @@ app.post("/gameWebpage",async (req,res) =>{
 app.post('/register',  (req, res) =>{
     countrycodes.push(req.body.country);
     console.log('Request country Code: ',req.body.country);
-    res.status(200).redirect("/register_last");
+    res.status(200).redirect("/user/signup");
     console.log("Sent: Register_1 Page Post Request");
 
 });
 
-app.get("/logout",(req, res) => {
-  req.logout();
-  res.redirect("/"); 
-});
+// app.get("/logout",(req, res) => {
+//   req.logout();
+//   res.redirect("/"); 
+// });
 
-app.post('/register_last',async (req, res) =>{
-  // console.log(req.body.email);
-    // const newUser = await Gameuser.findOne({username:req.body.username});
+// app.post('/register_last',async (req, res) =>{
+//   // console.log(req.body.email);
+//     // const newUser = await Gameuser.findOne({username:req.body.username});
 
-    // if(newUser) return res.status(400).redirect("/useralready");
+//     // if(newUser) return res.status(400).redirect("/useralready");
 
-    //  const newUser = await Gameuser.create(req.body);
-    const user = new Gameuser({
-      email: req.body.username,
-      password: req.body.password,
-      gxidnames: req.body.name
-    });
-    await user.save()
-    .then(user=>{
-      console.log(user);
-    }).catch(err=>{
-      console.log(err);
-    });
-    res.status(201).redirect("/home");
-    console.log("Sent: Register_last Page Post Request");
-})
+//     //  const newUser = await Gameuser.create(req.body);
+//     const user = new Gameuser({
+//       email: req.body.username,
+//       password: req.body.password,
+//       gxidnames: req.body.name
+//     });
+//     await user.save()
+//     .then(user=>{
+//       console.log(user);
+//     }).catch(err=>{
+//       console.log(err);
+//     });
+//     res.status(201).redirect("/home");
+//     console.log("Sent: Register_last Page Post Request");
+// })
 
-app.post('/login', passport.authenticate("local", { failureRedirect: '/login' }), (req, res) => {
-  res.redirect('/');
-});
+// app.post('/login', passport.authenticate("local", { failureRedirect: '/login' }), (req, res) => {
+//   res.redirect('/');
+// });
 
 const storage = multer.diskStorage({
   destination:  (req, file, callback) => {
@@ -227,7 +254,7 @@ upload(req,res,(err) =>{
         return res.end("Error uploading file.");
     }
     // res.end("File is uploaded");
-    res.redirect("/home");
+    res.redirect("/");
 });
 
 });

@@ -1,0 +1,88 @@
+<% if (!locals.user) { %>
+    <div class="sign_containerr" id="sign_container">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <div class="sign">
+            <div>
+            <a href="/user/login">
+                <img src="/static/iconsignin.svg"><br>
+                <span>Sign In</span>
+            </a></div> 
+            <div>
+            <a href="/user/register">
+                <img src="/static/iconregister.svg"><br>
+                <span style="text-decoration: none;">Create Acount</span>
+            </a></div>
+        </div>
+    </div>
+    <% } console.log("nav local: ",JSON.stringify(locals.user) ) %>
+    <nav class="nav">
+        <a href="#" class="text-gradient navbar" style="font-family:Sofia;font-size: 30px;">GameXplore</a>
+        <div class="dropforhover">
+            <a href="#" class="navbar">Features
+                <div class="dropdownContent">
+                    <a href="#">Latest Games</a>
+                    <a href="#">Coming Soon</a>
+                    <a href="#">Free-To-Play</a>
+                    <a href="#">GX Sports</a>
+                </div>
+            </a>
+        </div>
+        <div class="dropforhover">
+            <a href="#" class="navbar">About
+                <div class="dropdownContent">
+                    <a href="#">Company</a>
+                    <a href="#">GX Studios</a>
+                    <a href="#">Careers</a>
+                    <a href="#">News</a>
+                    <a href="#">Gx Patrners</a>
+                    <a href="#">Our Technology</a>
+                </div>
+            </a>
+        </div> 
+        <div class="dropforhover">
+            <a href="#" class="navbar">More Experiences
+                <div class="dropdownContent">
+                    <a href="#">GX Play</a>
+                    <a href="#">The GX App</a>
+                    <a href="#">Playtesting</a>
+                </div>
+            </a>
+        </div>
+        <div class="dropforhover">
+            <a href="#" class="navbar">Support
+                <div class="dropdownContent">
+                    <a href="#">GX Help</a>
+                    <a href="#">GX Status</a>
+                    <a href="#">Gx System updates</a>
+                </div>
+            </a>
+        </div>
+        <div class="dropforhover accimg">
+            <% if (locals.user) { %>
+            <a href="#" class="navbar"><%= user.username %>
+                <div class="dropdownContent account_dropdown">
+                    <a href="/user/profile/<%= user._id %>">GX Profile</a>
+                    <a href="#">Your Subscription</a>
+                    <a href="/user/profile/<%= user._id %>">Edit Profile</a>
+                    <a href="https://mail.google.com/mail/u/0">Share Profile</a>
+                    <a href="#">Your Friends</a>
+                    <a href="/user/logout">Log out</a>
+                </div>
+            </a>
+            <% } %>
+        </div>
+        <div class="dropforhover accimg1">
+            <% if (!locals.user) { %>
+                <img src="/static/images/default.png" onclick="openNav()" title="Login">
+            <% } else{ %>
+            <img src="/static/<%= user.profilePicture %>" onclick="openNav()" title="Login">
+            <!-- <a href="" class="navbar"> -->
+                    <div class="dropdownContent account_dropdown">
+                        <a href="/user/avatar/<%= user._id %>">GX Avatar</a>
+                        <a href="/user/avatar/<%= user._id %>">Upload Photo</a>
+                        <a href="https://mail.google.com/mail/u/0">Share Avatar</a>
+                        <a href="/logout">Log out</a>
+                    </div>
+            <% } %>
+        </div>
+    </nav>

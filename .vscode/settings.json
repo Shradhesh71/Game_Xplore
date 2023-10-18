@@ -1,3 +1,5 @@
 {
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "editor.fontFamily": "Consolas, 'Courier New', monospace",
+    "workbench.colorTheme": "Cobalt2"
 }

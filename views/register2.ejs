@@ -21,13 +21,13 @@
                 <a href="/home"><img src="/static/5309fe6da8594cc0b790de80852fd5d1.png"></a>
             </div>
             <h2>Create your <span>GX</span> Account</h2>
-            <form method="post" action="/register_last">
+            <form method="post" action="/user/signup">
                 <label for="mail" class="mainlabel"> Email </label><br>
-                <input class="maininput" type="email" id="mail" name="username" required><br>
+                <input class="maininput" type="email" id="mail" name="email" required><br>
                 <div class="gxid">
                     <label for="id" class="mainlabel"> GX Id </label><br>
-                    <input class="maininput gxxx"  type="text" id="id" name="name" required minlength="8"><br>
-                    <p>This is how your friends can find you in the app or in GX Games.<br>Your GX ID must be 8-16 characters</p>
+                    <input class="maininput gxxx"  type="text" id="id" name="username" required minlength="5"><br>
+                    <p>This is how your friends can find you in the app or in GX Games.<br>Your GX ID must be 5-16 characters</p>
                 </div>
                 <div class="form_item">
                     <label for="pass" class="mainlabel">Password</label><br>

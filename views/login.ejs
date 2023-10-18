@@ -16,7 +16,7 @@
         <!-- <i style="--clr:#245ff1;"></i>
 		<i style="--clr:#ff0057;"></i>
 		<i style="--clr:#b744ff;"></i> -->
-        <form action="" method="post">
+        <form action="/user/login" method="post">
             <div class="content">
                 <img src="/static/5309fe6da8594cc0b790de80852fd5d1.png">
                 <h2>Sign in to your <span>GX</span> Account</h2>
@@ -34,9 +34,9 @@
                 </div> 
                 <div style="height: 10px;"></div>
         </form>
-        <form class="personalLogin">
+        <form class="personalLogin" action="/user/login" method="post">
                 <label for="phone" class="mainlabel">Phone OR Email </label><br>
-                <input class="maininput" type="text" id="phone" name="phone" required><br>
+                <input class="maininput" type="text" id="phone" name="email" required><br>
                 <label for="pass" class="mainlabel">Password</label><br>
                 <div class="divvv">
                     <input class="maininput" id="YourPassword" type="password" name="password" required>
@@ -44,12 +44,12 @@
                 </div>
                 <div class="strengthMeter"></div>
                 <div class="remember-forget">
-                    <label><input type="checkbox" required> Remember me <a href="#"> Forgot Password</a></label>
+                    <label><input type="checkbox"> Remember me <a href="#"> Forgot Password</a></label>
                 </div>
                 <button type="submit" class="btn lobtn" onclick="myFunction()">SIGN IN</button>
                 <div class="login-register">
                     <p>Don't have an account?
-                        <a href="/register" class="register-link">Register</a></p>
+                        <a href="/user/register" class="register-link">Register</a></p>
                 </div>
             </div>
         </form>

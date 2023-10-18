@@ -11,9 +11,9 @@
         <div class="divleft">
             <h1 class="welcome">Welcome To <span class="text"></span> Account</h1>
             <h1 class="welcome1">Change Your Avatar Here</h1>
-            <img src="/static/5309fe6da8594cc0b790de80852fd5d1.png" alt="Profile Pic" title="Avatar">
-            <h1 class="gxid"><%= gxid %></h1>
-            <div class="btn">
+            <img src="/static/<%= user.profilePicture %>" alt="Profile Pic" title="Avatar">
+            <h1 class="gxid"><%= user.username %></h1>
+            <div class="btn"> 
                 <div class="deldiv">
                     <button class="delbtn">
                         <a href="#">Delete</a>
@@ -32,22 +32,22 @@
                 <h2><a href="https://www.bing.com/images/search?q=image+for+gamer&form=HDRSC3&first=1" class="learn" target="_blank">Browser Image</a></h2>
             </div>
             <div class="dpupload">
-                <form action="/avatar" enctype = "multipart/form-data" method = "post">
+                <form action="/user/avatard/<%= user._id %>" enctype = "multipart/form-data" method = "post">
                     <div class="pi"><label for="avatar">Choose a Profile Picture:</label></div>
                     <div class="oip">
                         <!-- <label>Select Photo</label> -->
-                        <input id="avatar" type="file" name="userFile"  accept="image/png, image/jpeg" />
+                        <input id="avatar" type="file" name="profilePicture"  accept="image/png, image/jpeg" />
                     </div>
                     <div class="pp"><img id="image" class="output" /></div>
                     <button>Save</button>
                 </form>
-                <form action="/avatar" method="post"> 
+                <form action="/user/avatard/<%= user._id %>" method="post"> 
                     <label>Choosen a Profile Avatar:</label>
                     <div class="choosenAvatar">
                         <div class="slide1">
                             <div class="slimg">
                                 <label>
-                                    <div class="ff"><input type="radio" name="avatar" value="Gavt3.jpg" checked></div>
+                                    <div class="ff"><input type="radio" name="profilePicture" value="Gavt3.jpg" checked></div>
                                     <img src="/static/Gavt3.jpg" alt="avatar" title="Avatar">
                                 </label>
                                 <!-- <div class="ff"><input type="checkbox" id="g3"></div>
@@ -55,13 +55,13 @@
                             </div>
                             <div class="slimg">
                                 <label>
-                                    <div class="ff"><input type="radio" name="avatar" value="Bavt3.jpg"></div>
+                                    <div class="ff"><input type="radio" name="profilePicture" value="Bavt3.jpg"></div>
                                 <img src="/static/Bavt3.jpg" alt="avatar" title="Avatar">
                                 </label>
                             </div>
                             <div class="slimg">
                                 <label>
-                                    <div class="ff"><input type="radio" name="avatar" value="Gavt2.jpg"></div>
+                                    <div class="ff"><input type="radio" name="profilePicture" value="Gavt2.jpg"></div>
                                     <img src="/static/Gavt2.jpg" alt="avatar" title="Avatar">
                                 </label>
                             </div>
@@ -69,21 +69,21 @@
                         <div class="slide1">
                             <div class="slimg">
                                 <label>
-                                    <div class="ff"><input type="radio" name="avatar" value="Bavt1.jpg" ></div>
+                                    <div class="ff"><input type="radio" name="profilePicture" value="Bavt1.jpg" ></div>
                                     <img src="/static/Bavt1.jpg" alt="avatar" title="Avatar">
                                 </label>
                                
                             </div>
                             <div class="slimg">
                                 <label>
-                                    <div class="ff"><input type="radio" name="avatar" value="Gavt1.jpg"></div>
+                                    <div class="ff"><input type="radio" name="profilePicture" value="Gavt1.jpg"></div>
                                     <img src="/static/Gavt1.jpg" alt="avatar" title="Avatar">
                                 </label>
                                 
                             </div>
                             <div class="slimg">
                                 <label>
-                                    <div class="ff"><input type="radio" name="avatar" value="Bavt2.jpg"></div>
+                                    <div class="ff"><input type="radio" name="profilePicture" value="Bavt2.jpg"></div>
                                     <img src="/static/Bavt2.jpg" alt="avatar" title="Avatar" >
                                 </label>
                             </div>
