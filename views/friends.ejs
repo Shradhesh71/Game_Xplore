@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/veiws/nav.css">
+    <link rel="stylesheet" href="/veiws/friend.css">
+    <title>GameXplore | Friend</title>
+</head>
+<body>
+    <%- include("partials/nav"); -%>
+    <div class="searchbar">
+        <form method="post" action="/friend" id="search">
+            <input type="search" placeholder="Search friend here...  " name="friendName" autocomplete="off"> 
+        </form> 
+    </div>
+    <div class="container">
+        <div class="friendbox">
+            <div class="friend">
+                <div class="friendPic">
+                    <img src="/static/images/default.png">
+                </div>
+                <div class="friendName">mane this</div>
+                <button>Chat with here</button>
+            </div>
+        </div>
+        <div class="chatbox">
+            <div class="chatTop">
+                <div class="friendPic">
+                    <img src="/static/images/default.png">
+                </div>
+                <div class="friendName" style="color: #6683AE;">manoj_bahj</div>
+            </div>
+            <div id="messages">
+                <div class="messageRight">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum obcaecati harum magni praesentium dolore. Quis nulla expedita consequuntur incidunt magnam.</div>
+                <div class="messageLeft">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+            </div>
+            <div id="form">
+                <form id="formMain" action="">
+                    <input id="inputmessage" type="text" autocomplete="off" autofocus placeholder="type message here.." name="friendMessage"/>
+                    <button type="submit" id="sendBtn"> Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="/veiws/friend.js"></script>
+    <script>
+        // const socket = io();
+        // const sendBtn = document.getElementById("sendBtn");
+        // const messageInput = document.getElementById("inputmessage");
+        // const allMessages = document.getElementById("messages");
+
+        // socket.on("message", (message) => {
+        //     const p = document.createElement("div");
+        //     p.innerText = message;
+        //     allMessages.appendChild(p);
+        // });
+
+        // sendBtn.addEventListener("click", (e) => {
+        //     const message = messageInput.value;
+        //     console.log(message);
+        //     socket.emit("user-message", message);
+        // });
+
+//         const socket = io();
+//         // const sendbtn =  document.getElementById("sendbtn");
+// const messageinput = document.getElementById("inputmessage");
+// const allmessages = document.getElementById("messages");
+// const form = document.getElementById('formMain');
+// const sendBtn = document.getElementById('sendBtn');
+
+// console.log("main: ");
+
+//         // for
+//         sendBtn.addEventListener("click", (e) => {
+//             const message = messageinput.value;
+//             console.log(message);
+//             socket.emit("user-message", message);
+//         });
+//         socket.on('message', message=> {
+//             console.log("socket: ", message);
+//             const item = document.createElement('div');
+//             item.innerHTML = `<div class="messageRight">${message}</div>`;
+//             allmessages.appendChild(item);
+//             // window.scrollTo(0, document.body.scrollHeight);
+//         });  
+</script>
+
+</body>
+</html>

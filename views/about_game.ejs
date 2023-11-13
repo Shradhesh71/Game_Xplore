@@ -1,8 +1,22 @@
-<%- include("partials/header"); -%>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameXplore | <%= gametitle%></title>
     <link rel="stylesheet" href="/veiws/abgame.css">
+    <link rel="stylesheet" href="/veiws/nav.css">
+    <link rel="stylesheet" href="/veiws/footer.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/ee7a97f43f.js" crossorigin="anonymous"></script>
+    <script>
+        const html = document.getElementById("gamedeck");
+        html.innerHTML = html.innerHTML.replace("&amp;",/&/g).replace("&lt;",/</g).replace( "&gt;",/>/g);
+    </script>
 </head>
+
+<%- include("partials/nav"); -%>
 <div class="Container">
     <h1 class="name"> <%= gametitle %> </h1>
     <div class="main-content">
@@ -24,9 +38,10 @@
             </div>
         </div>
         <div class="secondsection">
-            
             <div class="gamedetail">
-                <div class="div"> <%= gamedisp %> </div>
+                <div class="div" id="gamedeck"> 
+                   <%= gamedisp %> 
+                </div>
             </div>
         </div>
         <div class="similargame">
@@ -41,3 +56,9 @@
 </div>
 
 <%- include("partials/footer"); -%>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="/veiws/main.js"></script>
+
+</body>
+</html>

@@ -12,13 +12,18 @@ const {
 // const Gameuser = require("../models/user");
 
 const userRoute = require("./routes/user");
+const GoogleRoute = require("./routes/googleAuth");
+const searchRoute= require("./routes/search");
+const friendchat= require("./routes/friendchat");
 
+
+const session = require("express-session");
+const passport = require('passport');
 
 // const {connectmongoose, Gameuser} = require("./database.js");
 // const {intinalizingPassport} = require("./passport.js");
-// const session = require("express-session");
-// const passport = require('passport');
-// const axios = require("axios");
+
+const axios = require("axios");
 // const passportlocalmongoose = require('passport-local-mongoose');
 // const GoogleStrategy = require('passport-google-oauth20').Strategy;
 // const findOrCreate = require('mongoose-findorcreate');
@@ -83,6 +88,10 @@ app.get('/',async (req, res) =>{
     console.log("Sent: Main_F Page");
 });
 
+app.get("/error",async (req, res) =>{
+  res.render("404");
+});
+
 // app.get("/home",(req, res) =>{
 //   if(req.isAuthenticated()) {
 //     res.render("home",{gxidname:"Shivam"});
@@ -94,6 +103,10 @@ app.get('/',async (req, res) =>{
 // });
 
 app.use("/user", userRoute);
+app.use("/auth", GoogleRoute);
+app.use("/search", searchRoute);
+app.use("/friend", friendchat);
+
 
 
 // app.get('/login',(req, res) =>{
@@ -136,24 +149,34 @@ app.get("/useralready",(req,res) =>{
 // });
 const apiKey = '227ead613574b24dba4bbad59eb633dabdc43a2b';
 
-app.post("/gameWebpage",async (req,res) =>{
+app.post("/game",async (req,res) =>{
   console.log(req.body);
   try {
     const gameId = req.body.gamen;
     const response = await axios.get(
       `https://www.giantbomb.com/api/game/${gameId}/?api_key=${apiKey}&format=json`
     );
+    // console.log(response);
     const gameData = response.data.results;
-    const params = {gametitle:gameData.name,
-                    gamemainimage:gameData.image.medium_url,
-                    gamerelease:gameData.original_release_date,
-                    gamedeck:gameData.deck,
-                    gamedisp:gameData.description,
-                    gamesimilar:gameData.similar_games[0].name,
-                    gamesemiurl:gameData.similar_games[0].site_detail_url
-                  }
+    // const params = {gametitle:gameData.name,
+    //                 gamemainimage:gameData.image.medium_url,
+    //                 gamerelease:gameData.original_release_date,
+    //                 gamedeck:gameData.deck,
+    //                 gamedisp:gameData.description,
+    //                 gamesimilar:gameData.similar_games[0].name,
+    //                 gamesemiurl:gameData.similar_games[0].site_detail_url
+    //               }
     // res.json(gameInfo);
-  res.render("about_game.ejs",params);
+  res.render("about_game",{
+    user: req.user,
+    gametitle:gameData.name,
+    gamemainimage:gameData.image.medium_url,
+    gamerelease:gameData.original_release_date,
+    gamedeck:gameData.deck,
+    gamedisp:gameData.description,
+    gamesimilar:gameData.similar_games[0].name,
+    gamesemiurl:gameData.similar_games[0].site_detail_url
+  });
   } catch (error) {
     res.status(500).json({ error: 'Internal Server Error' });
   }

@@ -1,6 +1,6 @@
 const LocalStrategy = require("passport-local").Strategy;   
 const {Gameuser} = require("./database.js");
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs'); 
 
 exports.intinalizingPassport = (passport) => {
     passport.use(new LocalStrategy(

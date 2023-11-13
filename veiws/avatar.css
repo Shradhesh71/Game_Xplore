@@ -2,8 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Yeon+Sung&display=swap');
 body{
     background: url(/static/avatarbg.jpeg);
-    background-size: cover;
-    
+    background-size: cover;    
 }
 .container{
     display: flex;

@@ -2,6 +2,9 @@ const {Schema, model} = require("mongoose");
 const {createHmac, randomBytes} = require("crypto");
 const { createTokenForUser } = require("../services/authentication");
 
+// const friendName = {
+//     name:String
+// };
 
 const userSchema =  new Schema(
     {
@@ -9,6 +12,10 @@ const userSchema =  new Schema(
             type: String,
             required: true,
             unique: true,
+        },
+        dob:{
+            type: String,
+            default:"dd/mm/yy",
         },
         salt:{
             type: String,
@@ -18,9 +25,7 @@ const userSchema =  new Schema(
             type: String,
             required: true,
         },
-        // googleId:String,
         // countrycode:String,
-        // facebookId:String,
         username:{
             type: String,
             required: true,
@@ -35,6 +40,10 @@ const userSchema =  new Schema(
             type: String,
             default:"/images/default.png",
         },
+        // friendNames:{
+        //     type: String,
+        //     // friend:[friendName],
+        // }
     },
     { timestamps: true }
 );

@@ -1,6 +1,130 @@
 @import url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap');
-c
+*{
+    margin: 0px;
+    padding: 0px;
+    scroll-behavior: smooth;
+}
 
+.mySlides {display: none;}
+
+.slideshow-container {
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+    /* width: 100vw; */
+}
+.slideshow-container img{
+    max-width: 100%;
+}
+.text {
+    color: #f2f2f2;
+    font-size: 45px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+.numbertext {
+    color:rgb(249, 5, 5);
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    font-size: 2rem;
+    margin-top:250px ;
+    margin-left: 230px;
+    font-weight: 800;
+    text-align: center;
+}
+.searchbar input{
+    color: #e73b10;
+    top: 100px;
+    left: 550px;
+    font-size: 25px;
+    padding: 8px 12px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    z-index: 1;
+    /* bottom: 12px; */
+    width: 25%;
+    text-align: center;
+    cursor: pointer;
+    border: 3.5px solid #40547b; 
+    border-radius: 15px; 
+}
+.searchbar input::placeholder{
+    background: linear-gradient(to right, #ff8a00 0%, #dd4c4f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.searchbar input:hover {
+    border-color:#20355f;
+    animation-name: flash_border;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-name: flash_border;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-name: flash_border;
+    -moz-animation-duration: 2s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+  }
+  
+  @keyframes flash_border {
+    0% {
+      border-color: #40547b;
+    }
+    50% {
+      border-color: #101b31;
+    }
+    100% {
+      border-color: #20355f;
+    }
+  }
+  
+  @-webkit-keyframes flash_border {
+    0% {
+        border-color: #40547b;
+      }
+      50% {
+        border-color: #101b31;
+      }
+      100% {
+        border-color: #20355f;
+      }
+  }
+  
+  @-moz-keyframes flash_border {
+    0% {
+        border-color: #40547b;
+      }
+      50% {
+        border-color: #101b31;
+      }
+      100% {
+        border-color: #20355f;
+      }
+  }
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+  
+@keyframes fade {
+    from {opacity: .4} 
+    to {opacity: 1}
+}
+
+@media only screen and (max-width: 300px) {
+    .text {font-size: 11px}
+}
 
 .homeAds{
     text-align: center;
@@ -117,7 +241,7 @@ c
         background-size: 35px 35px;
         transform: translate(-50%, -62%) rotate(45deg);
         z-index: 8;
-        animation: animateDots_two 2s linear infinite;
+        animation: animateDots_two 2s linear infinite; 
 }
       
 .layer.layer4 ,.layerR.layer4{

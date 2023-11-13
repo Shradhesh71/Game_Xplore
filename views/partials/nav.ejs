@@ -14,9 +14,10 @@
             </a></div>
         </div>
     </div>
-    <% } console.log("nav local: ",JSON.stringify(locals.user) ) %>
+    <% } //console.log("nav local: ",JSON.stringify(locals.user) ) %>
     <nav class="nav">
-        <a href="#" class="text-gradient navbar" style="font-family:Sofia;font-size: 30px;">GameXplore</a>
+        <a href="/" class="text-gradient navbar" style="font-family:Sofia;font-size: 30px;">GameXplore</a>
+        <img src="/static/bars-staggered.svg" id="menu-icon"> 
         <div class="dropforhover">
             <a href="#" class="navbar">Features
                 <div class="dropdownContent">
@@ -65,9 +66,9 @@
                     <a href="#">Your Subscription</a>
                     <a href="/user/profile/<%= user._id %>">Edit Profile</a>
                     <a href="https://mail.google.com/mail/u/0">Share Profile</a>
-                    <a href="#">Your Friends</a>
+                    <a href="/friend">Your Friends</a>
                     <a href="/user/logout">Log out</a>
-                </div>
+                </div> 
             </a>
             <% } %>
         </div>
@@ -75,13 +76,17 @@
             <% if (!locals.user) { %>
                 <img src="/static/images/default.png" onclick="openNav()" title="Login">
             <% } else{ %>
-            <img src="/static/<%= user.profilePicture %>" onclick="openNav()" title="Login">
+                <% if (user.profilePicture.length<10) { %>
+                    <img src="/static/<%= user.profilePicture %>"  title="picture">
+                <% } else{ %>
+                    <img src="<%=user.profilePicture%>"  title="picture">
+                <% } %>
             <!-- <a href="" class="navbar"> -->
                     <div class="dropdownContent account_dropdown">
                         <a href="/user/avatar/<%= user._id %>">GX Avatar</a>
                         <a href="/user/avatar/<%= user._id %>">Upload Photo</a>
                         <a href="https://mail.google.com/mail/u/0">Share Avatar</a>
-                        <a href="/logout">Log out</a>
+                        <a href="/user/logout">Log out</a>
                     </div>
             <% } %>
         </div>

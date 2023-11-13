@@ -18,7 +18,7 @@ function showSlides() {
   setTimeout(showSlides, 2000);
 }
 
-ScrollReveal({ 
+ScrollReveal({  
   reset: true,
   distance: '80px',
   duration: 800,

@@ -10,6 +10,7 @@ function createTokenForUser(user){
         profilePicture: user.profilePicture,
         role: user.role,
         username: user.username,
+        dob:user.dob,
     };
     const token = JWT.sign(payload, secret);
     return token;
@@ -20,8 +21,22 @@ function validateToken(token) {
     return payload;
 };
 
+function createTokenForGoogleuser(user){
+    console.log("token",user);
+    const payload = {
+        _id: user._id, 
+        profilePicture: user.profilePicture,
+        role: user.role,
+        username: user.username,
+        dob:user.dob,
+    };
+    const token = JWT.sign(payload, secret);
+    return token;
+};
+
 module.exports = {
     createTokenForUser,
     validateToken,
+    createTokenForGoogleuser,
   };
 

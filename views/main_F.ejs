@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/veiws/nav.css">
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?Yeon=sung">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/ee7a97f43f.js" crossorigin="anonymous"></script>
 </head>
@@ -16,9 +17,16 @@
     <%- include("partials/nav"); -%>
 
 <!--    Close navbar -->
+    <!-- <iframe
+    src="https://www.chatbase.co/chatbot-iframe/eah3OanU0L-PDtkw9Fq_B"
+    width="100%"
+    style="height: 100%; min-height: 700px"
+    frameborder="0"
+    ></iframe> -->
+
     <div class="slideshow-container">
         <div class="searchbar">
-            <form method="post" action="/gameWebpage">
+            <form method="post" action="/search/game">
             <input type="search" placeholder="Search Game here...  " name="gamen" autocomplete="off"> 
             </form> 
         </div>
@@ -39,6 +47,24 @@
             <div class="numbertext">3 / 3</div>
             <img src="/static/slide4.jpg" style="width:100%;height: 450px;">
             <div class="text">Real Madrid GF</div>
+        </div>
+    </div>
+    <div class="top-games">
+        <div class="top-game">
+            <img src="" alt="Top-Game">
+            <div class="top-gamename"></div>
+        </div>
+        <div class="top-game">
+            <img src="" alt="Top-Game">
+            <div class="top-gamename"></div>
+        </div>
+        <div class="top-game">
+            <img src="" alt="Top-Game">
+            <div class="top-gamename"></div>
+        </div>
+        <div class="top-game">
+            <img src="" alt="Top-Game">
+            <div class="top-gamename"></div>
         </div>
     </div>
     <!-- <div class="container_layer">
@@ -65,6 +91,7 @@
         <div class="join_content">Don’t just get the game. Get more from your game. Unlock<br> exclusive rewards, members-only content, and a library of top<br> titles.</div>
         <button>Join Now</button>
     </div>
+    
     <footer>
         <div class="first_footer">
             <div class="first_footer_1">
@@ -132,5 +159,17 @@
     </footer>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="/veiws/main.js"></script>
+    <script>
+        window.embeddedChatbotConfig = {
+        chatbotId: "eah3OanU0L-PDtkw9Fq_B",
+        domain: "www.chatbase.co"
+        }
+        </script>
+        <script
+        src="https://www.chatbase.co/embed.min.js"
+        chatbotId="eah3OanU0L-PDtkw9Fq_B"
+        domain="www.chatbase.co"
+        defer>
+        </script>
 </body>
 </html>

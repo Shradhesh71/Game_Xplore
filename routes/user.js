@@ -32,7 +32,7 @@ router.get("/logout", (req, res) => {
 
 router.get("/profile/:id",async (req, res) =>{
     const user = await Gameuser.find({_id: req.params.id});
-    if(!user) return res.redirect("/");
+    if(!user) return res.redirect("/error");
 
     return res.render("profile",{
         user: req.user,
@@ -71,6 +71,19 @@ router.post("/avatard/:id", async (req, res) =>{
     const {profilePicture} = req.body;
     console.log(req.body);
     Gameuser.findOneAndUpdate({_id:req.params.id},{$set:{"profilePicture":profilePicture}})
+    .then(()=>{
+        console.warn("Changed...");
+    })
+    .catch((error)=>{
+        console.log("not changed",error);
+    });
+    return res.redirect("/");
+});
+
+router.post("/dob/:id", async (req, res) =>{
+    const {dateOfBirth} = req.body;
+    console.log(req.body);
+    Gameuser.findOneAndUpdate({_id:req.params.id},{$set:{"dob":dateOfBirth}})
     .then(()=>{
         console.warn("Changed...");
     })
