@@ -19,37 +19,70 @@
 <%- include("partials/nav"); -%>
 <div class="Container">
     <h1 class="name"> <%= gametitle %> </h1>
-    <div class="main-content">
+    <div class="main-content"> 
         <div class="basicsection">
             <div class="img-section">
                 <img src="<%= gamemainimage %>">
             </div>
             <div class="content">
-                <div class="rating">
-                    <div>Release date:</div>
-                    <div><%= gamerelease %></div>
-                </div>
                 <div class="Discrip">
-                    <h2> <%= gamedeck %></h2>
+                    <h3>Game Discription</h3>
+                    <p> <%= gamedisp %> </p>
                 </div>
-                <div class="down">
+                <div class="rating">
+                    <div>Rating :</div>
+                    <div><%= gamerate %></div>
+                </div>
+                <!-- <div class="down">
                     <button class="dold"> Download</button>
-                </div>
+                </div> -->
             </div>
         </div>
-        <div class="secondsection">
-            <div class="gamedetail">
+        <div class="Themesection">
+            <h1>Game Themes</h1>
+            <div class="gametheme">
+                <% theme.forEach(item=>{ %>
                 <div class="div" id="gamedeck"> 
-                   <%= gamedisp %> 
+                   <h2><%= item.name %> </h2>
+                   <a href="<%= item.url%>" target="_blank"><button> Try Now</button></a>
                 </div>
+            <%   });  %>
+        </div>
+        </div>
+
+        <div class="download">
+            <h2>Download Section</h2>
+            <div class="allDownlink">
+                <% download.forEach(item=>{ %>
+                    <div class="downbox">
+                        <a href="<%= item.url%>" target="_blank"><button> Download</button></a>
+                    </div>
+                <%   });  %>
             </div>
         </div>
+
         <div class="similargame">
             <h1>Similar game:</h1>
-            <div class="simi">
-                <h2> <%= gamesimilar %> </h2>
-                <button class="btn"><a href=" <%= gamesemiurl %> ">TRY NOW</a></button>
+            <% similar_games.forEach(item=>{ %>
+              <div class="allSimilar"> 
+                <div class="simi">
+                    <h4> <%= item.name %> </h4>
+                </div>
+                </div>
+                <%   });  %>
+            
+        </div>
+        <div class="company">
+            <h1>Involved Company</h1>
+            <div class="allcompany">
+            <% company.forEach(item=>{ %>
+                
+                <div class="com">
+                    <h4> <%= item.company.name %> </h4>
+                </div>
+                <%   });  %>
             </div>
+            
         </div>
         
     </div>

@@ -1,63 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GameXplore | Home</title>
-    <link rel="stylesheet" href="/veiws/main.css">
-    <link rel="stylesheet" href="/veiws/nav.css">
+    <link rel="stylesheet" href="/veiws/main.css" />
+    <link rel="stylesheet" href="/veiws/nav.css" />
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?Yeon=sung">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/ee7a97f43f.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?Yeon=sung" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/ee7a97f43f.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
     <%- include("partials/nav"); -%>
 
     <div class="slideshow-container">
-        <div class="searchbar">
-            <form method="post" action="/search/game">
-            <input type="search" placeholder="Search Game here...  " name="gamen" autocomplete="off"> 
-            </form> 
-        </div>
-        <div class="mySlides fade">
-            <div class="numbertext">1 / 3</div>
-            <!-- <div class="searchbar"><input type="search" placeholder="Search..">  </div> -->
-            <img src="/static/slide2.jpg" style="width:100%;height: 450px;">
-            <div class="text">GX Business: Casino</div>
-        </div>
-        
-        <div class="mySlides fade">
-            <!-- <div class="numbertext">Get a FC24 when you <br>Pre-Order GX SPORTS<br> FC™ 24 Ultimate Edition by 31 Aug</div> -->
-            <img src="/static/slide3.jpg" style="width:100%;height: 450px;">
-            <div class="text">FC24</div>
-        </div>
-        
-        <div class="mySlides fade">
-            <div class="numbertext">3 / 3</div>
-            <img src="/static/slide4.jpg" style="width:100%;height: 450px;">
-            <div class="text">Real Madrid GF</div>
-        </div>
+      <div class="searchbar">
+        <form method="post" action="/search/game">
+          <input
+            type="search"
+            placeholder="Search Game here...  "
+            name="gamen"
+            autocomplete="off"
+          />
+        </form>
+      </div>
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 3</div>
+        <!-- <div class="searchbar"><input type="search" placeholder="Search..">  </div> -->
+        <img src="/static/slide2.jpg" style="width: 100%; height: 450px" />
+        <div class="text">GX Business: Casino</div>
+      </div>
+
+      <div class="mySlides fade">
+        <!-- <div class="numbertext">Get a FC24 when you <br>Pre-Order GX SPORTS<br> FC™ 24 Ultimate Edition by 31 Aug</div> -->
+        <img src="/static/slide3.jpg" style="width: 100%; height: 450px" />
+        <div class="text">FC24</div>
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">3 / 3</div>
+        <img src="/static/slide4.jpg" style="width: 100%; height: 450px" />
+        <div class="text">Real Madrid GF</div>
+      </div>
     </div>
     <div class="top-games">
-        <div class="top-game">
-            <img src="" alt="Top-Game">
-            <div class="top-gamename"></div>
-        </div>
-        <div class="top-game">
-            <img src="" alt="Top-Game">
-            <div class="top-gamename"></div>
-        </div>
-        <div class="top-game">
-            <img src="" alt="Top-Game">
-            <div class="top-gamename"></div>
-        </div>
-        <div class="top-game">
-            <img src="" alt="Top-Game">
-            <div class="top-gamename"></div>
-        </div>
+      <div class="top-game">
+        <iframe
+          width="420"
+          height="315"
+          src="https://www.youtube.com/embed/<%= gameyou0 %>?autoplay=1&mute=1"
+        >
+        </iframe>
+        <a href="<%= gameweb0 %>">
+          <div class="top-gamename"><%= gameName0 %></div></a
+        >
+      </div>
+      <div class="top-game">
+        <iframe
+          width="420"
+          height="315"
+          src="https://www.youtube.com/embed/<%= gameyou1 %>?autoplay=1&mute=1"
+        >
+        </iframe>
+        <a href="<%= gameweb1 %>">
+          <div class="top-gamename"><%= gameName1 %></div></a
+        >
+      </div>
+      <div class="top-game">
+        <iframe
+          width="420"
+          height="315"
+          src="https://www.youtube.com/embed/<%= gameyou2 %>?autoplay=1&mute=1"
+        >
+        </iframe>
+        <a href="<%= gameweb2 %>">
+          <div class="top-gamename"><%= gameName2 %></div></a
+        >
+      </div>
+      <!-- <div class="top-game">
+        <iframe
+          width="420"
+          height="315"
+          src="https://www.youtube.com/embed/<%= gameyou2 %>?autoplay=1&mute=1"
+        >
+        </iframe>
+        <a href="<%= gameweb2 %>">
+          <div class="top-gamename"><%= gameName2 %></div></a
+        >
+      </div> -->
     </div>
     <!-- <div class="container_layer">
         <div class="homeAds">
@@ -79,12 +120,19 @@
         <div class="layerR layer6"></div>
     </div> -->
     <div class="join">
-        <div class="gameName"><img src="/static/5309fe6da8594cc0b790de80852fd5d1.png"><div>Play</div></div>
-        <div class="join_content">Don’t just get the game. Get more from your game. Unlock<br> exclusive rewards, members-only content, and a library of top<br> titles.</div>
-        <button>Join Now</button>
+      <div class="gameName">
+        <img src="/static/5309fe6da8594cc0b790de80852fd5d1.png" />
+        <div>Play</div>
+      </div>
+      <div class="join_content">
+        Don’t just get the game. Get more from your game. Unlock<br />
+        exclusive rewards, members-only content, and a library of top<br />
+        titles.
+      </div>
+      <button>Join Now</button>
     </div>
-    
-    <footer>
+    <%- include("partials/footer"); -%>
+    <!-- <footer>
         <div class="first_footer">
             <div class="first_footer_1">
                 <a href="#" title="Careers">Careers</a>
@@ -148,20 +196,20 @@
             <a href="#" title="Our Commitments">Security</a>
             <a href="#" title="Patrners With Us"><img src="/static/copyright-regular.svg"  alt="Copyrights">GameXplore2023</a>
         </div>
-    </footer>
+    </footer> -->
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="/veiws/main.js"></script>
     <script>
-        window.embeddedChatbotConfig = {
+      window.embeddedChatbotConfig = {
         chatbotId: "eah3OanU0L-PDtkw9Fq_B",
-        domain: "www.chatbase.co"
-        }
-        </script>
-        <script
-        src="https://www.chatbase.co/embed.min.js"
-        chatbotId="eah3OanU0L-PDtkw9Fq_B"
-        domain="www.chatbase.co"
-        defer>
-        </script>
-</body>
+        domain: "www.chatbase.co",
+      };
+    </script>
+    <script
+      src="https://www.chatbase.co/embed.min.js"
+      chatbotId="eah3OanU0L-PDtkw9Fq_B"
+      domain="www.chatbase.co"
+      defer
+    ></script>
+  </body>
 </html>
