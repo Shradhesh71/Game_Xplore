@@ -8,6 +8,7 @@ router.use(bodyParser.json());
 router.use(cors());
 
 router.post("/game", async (req, res) => {
+  console.log(req.body)
   const { gamen } = req.body;
   const headers = {
     "Client-ID": "hp48e43i91iisl72by8u6zdbge0vnc",
@@ -20,26 +21,26 @@ router.post("/game", async (req, res) => {
   await axios
     .get(gameUrl, {
       headers,
-    })  
+    })
     .then((res) => {
-    //   console.log(res.data);
+      //   console.log(res.data);
       gameData = res.data;
       console.log("----------------------------------------------------");
-      console.log(gameData[0].name);
+      // console.log(gameData[0].name);
     })
     .catch((err) => console.error(err));
-    console.log(gameData[0].similar_games);
+  // console.log(gameData[0].similar_games);
   return res.render("about_game", {
     user: req.user,
     gametitle: gameData[0].name,
     gamemainimage: gameData[0].cover.url,
-    gamerelease: gameData[0].release_dates[0].date,
+    // gamerelease: gameData[0].release_dates[0].date,
     gamerate: gameData[0].rating,
     gamedisp: gameData[0].summary,
     similar_games: gameData[0].similar_games,
-    theme:gameData[0].themes,
+    theme: gameData[0].themes,
     download: gameData[0].websites,
-    company: gameData[0].involved_companies
+    company: gameData[0].involved_companies,
   });
 });
 

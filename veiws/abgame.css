@@ -186,3 +186,13 @@ body {
 .Themesection {
   margin: 15px;
 }
+.allSimilar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.allSimilar button:hover,
+.downbox a:hover,
+.div a:hover {
+  color: rgb(190, 91, 91);
+}

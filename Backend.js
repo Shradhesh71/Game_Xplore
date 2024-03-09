@@ -94,10 +94,10 @@ app.get("/", async (req, res) => {
       //   console.log(res.data);   1.websites[0].url
       gameData = res.data;
       console.log("----------------------------------------------------");
-      console.log(gameData[0].videos[0].video_id);
-      console.log(gameData[1].videos[0].video_id);//  1.videos[0].video_id
-      console.log(gameData[2].videos[0].video_id);
-      console.log(gameData[1].websites[0].url);
+      // console.log(gameData[0].videos[0].video_id);
+      // console.log(gameData[1].videos[0].video_id);//  1.videos[0].video_id
+      // console.log(gameData[2].videos[0].video_id);
+      // console.log(gameData[1].websites[0].url);
     })
     .catch((err) => console.error(err));
 

@@ -31,13 +31,14 @@
                 </div>
                 <div class="rating">
                     <div>Rating :</div>
-                    <div><%= gamerate %></div>
+                    <!-- <div><%=  %></div> -->
                 </div>
                 <!-- <div class="down">
                     <button class="dold"> Download</button>
                 </div> -->
             </div>
         </div>
+        <% if( locals.theme){  %>
         <div class="Themesection">
             <h1>Game Themes</h1>
             <div class="gametheme">
@@ -49,7 +50,7 @@
             <%   });  %>
         </div>
         </div>
-
+        <% }if( locals.download){  %>
         <div class="download">
             <h2>Download Section</h2>
             <div class="allDownlink">
@@ -60,18 +61,21 @@
                 <%   });  %>
             </div>
         </div>
-
+        <% } if(locals.similar_games){  %>
         <div class="similargame">
             <h1>Similar game:</h1>
             <% similar_games.forEach(item=>{ %>
               <div class="allSimilar"> 
                 <div class="simi">
-                    <h4> <%= item.name %> </h4>
+                    <form method="post" action="/search/game">
+                        <button name="gamen" value="<%= item.name %>" href=""> <%= item.name %> </button>
+                      </form>
                 </div>
                 </div>
                 <%   });  %>
             
         </div>
+        <% } if(locals.company){  %>
         <div class="company">
             <h1>Involved Company</h1>
             <div class="allcompany">
@@ -84,6 +88,7 @@
             </div>
             
         </div>
+        <% } %>
         
     </div>
 </div>
