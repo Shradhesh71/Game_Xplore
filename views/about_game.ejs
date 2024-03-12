@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameXplore | <%= gametitle%></title>
+    <link rel="icon" type="image/png" href="/static/logo.png"/>
     <link rel="stylesheet" href="/veiws/abgame.css">
     <link rel="stylesheet" href="/veiws/nav.css">
     <link rel="stylesheet" href="/veiws/footer.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
     <script src="https://kit.fontawesome.com/ee7a97f43f.js" crossorigin="anonymous"></script>
     <script>
         const html = document.getElementById("gamedeck");
@@ -31,13 +38,21 @@
                 </div>
                 <div class="rating">
                     <div>Rating :</div>
-                    <!-- <div><%=  %></div> -->
+                    <div><%= gamerate  %></div>
                 </div>
                 <!-- <div class="down">
                     <button class="dold"> Download</button>
                 </div> -->
             </div>
         </div>
+        <br>
+        <% if( locals.storyline){  %>
+            <div class="storyline">
+                <h1> Main Storyline of The Game</h1><br>
+                <%= storyline %>
+            </div>
+            <%} %>
+
         <% if( locals.theme){  %>
         <div class="Themesection">
             <h1>Game Themes</h1>
@@ -45,18 +60,59 @@
                 <% theme.forEach(item=>{ %>
                 <div class="div" id="gamedeck"> 
                    <h2><%= item.name %> </h2>
-                   <a href="<%= item.url%>" target="_blank"><button> Try Now</button></a>
+                   <a href="<%= item.url%>" target="_blank"><button type="button" class="btn btn-secondary p-2"> Try Now</button></a>
                 </div>
-            <%   });  %>
+            <%   })};  %>
         </div>
-        </div>
-        <% }if( locals.download){  %>
+    </div>
+        <% if( locals.screenshots){  %>
+            <div class="ScreenShot-Main container">
+                <h1 class="fw-light text-center text-lg-start mt-4 mb-0">ScreenShot</h1>
+                <hr class="mt-2 mb-5">
+                <div class="row text-center text-lg-start">
+                    <% screenshots.forEach(item=>{%>
+                    <div class="col-lg-3 col-md-4 col-6">
+                        <a href="#" class="d-block mb-4 h-100">
+                            <img class="img-fluid img-thumbnail" src="<%= item.url %>" alt="<%= item.url %>">
+                        </a>
+                    </div>
+                <%   });  %>
+                </div>
+
+                </div>
+            </div>
+        <%   };  %>
+        <% if( locals.videos){ let i = 0;%>
+            <div class="container">
+                <div class="jumbotron mt-4">
+                    <h1><i class="fa fa-camera-retro"></i> Videos</h1>
+                    <p>Just a Gallary Full of Beautiful Videos of Game <%= gametitle %>... </p>
+                </div>
+                <div class="d-inline-flex p-2">
+                    <div class="col-lg-4 col-sm-6 d-inline-flex p-2">
+                        <% videos.forEach(item=>{ if(i<2){%>
+                        <div class="thumbnail p-5">
+                            <iframe
+                            width="420"
+                            height="315"
+                            src="https://www.youtube.com/embed/<%= item.video_id %>?autoplay=1&mute=1"
+                            >
+                            </iframe>
+                        </div>
+                        <% }i++;  });  %>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+        
+        <% if( locals.download){  %>
         <div class="download">
             <h2>Download Section</h2>
             <div class="allDownlink">
                 <% download.forEach(item=>{ %>
                     <div class="downbox">
-                        <a href="<%= item.url%>" target="_blank"><button> Download</button></a>
+                        <!-- <a href="<%= item.url%>" target="_blank"><button> Download</button></a> -->
+                        <a href="<%= item.url%>" class="buttonDownload">Download</a>
                     </div>
                 <%   });  %>
             </div>
@@ -97,6 +153,11 @@
 
 <script src="https://unpkg.com/scrollreveal"></script>
 <script src="/veiws/main.js"></script>
+<script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
 
 </body>
 </html>

@@ -1,32 +1,38 @@
-passport.use(new GoogleStrategy({
-  clientID: "626158153494-cibhakvl5dr0q91vkh9fns8u9a2el5uo.apps.googleusercontent.com",
-  clientSecret: process.env.CLIENT_SECRET,
-  callbackURL: "http://localhost:3000/auth/google/callback",
-  passReqToCallback: true,
-},
-(req,accessToken, refreshToken, profile, done) =>{
-  console.log(profile);
-  console.log(profile.displayName);
-  Gameuser.findOrCreate({ googleId: profile.id },  (err, user) =>{
-    return done(err, user);
-  });
-}
-));
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID:
+        "626158153494-cibhakvl5dr0q91vkh9fns8u9a2el5uo.apps.googleusercontent.com",
+      clientSecret: process.env.CLIENT_SECRET,
+      callbackURL: "http://localhost:3000/auth/google/callback",
+      passReqToCallback: true,
+    },
+    (req, accessToken, refreshToken, profile, done) => {
+      console.log(profile);
+      console.log(profile.displayName);
+      Gameuser.findOrCreate({ googleId: profile.id }, (err, user) => {
+        return done(err, user);
+      });
+    },
+  ),
+);
 
-Gameuser.register(newUser,req.body.password,(err, user)=>{
-    if(err){
-        console.log(err);
-        res.redirect("/register"); 
-        console.log("Register Failed");
-    }else{
-        passport.authenticate("local", {
-          successRedirect: '/',   // Redirect after successful registration
-          failureRedirect: '/register', // Redirect if registration fails
-          // failureFlash: true            // Enable flash messages for error handling
-      })(req, res);
-    }
+Gameuser.register(newUser, req.body.password, (err, user) => {
+  if (err) {
+    console.log(err);
+    res.redirect("/register");
+    console.log("Register Failed");
+  } else {
+    passport.authenticate("local", {
+      successRedirect: "/", // Redirect after successful registration
+      failureRedirect: "/register", // Redirect if registration fails
+      // failureFlash: true            // Enable flash messages for error handling
+    })(req, res);
+  }
 });
 
-    //  req.body are passed as text strings
-    // for request number , num = number(req.body.number)
-    //  for request float , float = parsefloat(req.body.floatnumber)
+//  req.body are passed as text strings
+// for request number , num = number(req.body.number)
+//  for request float , float = parsefloat(req.body.floatnumber)
+
+//  vaibhav.vv2003@gmail.com  A12@7sdf

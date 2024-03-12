@@ -22,7 +22,7 @@
             <a href="#" class="navbar">Features
                 <div class="dropdownContent">
                     <a href="#">Latest Games</a>
-                    <a href="#">Coming Soon</a>
+                    <a href="/football">Football</a>
                     <a href="#">Free-To-Play</a>
                     <a href="#">GX Sports</a>
                 </div>
@@ -75,11 +75,11 @@
         <div class="dropforhover accimg1">
             <% if (!locals.user) { %>
                 <img src="/static/images/default.png" onclick="openNav()" title="Login">
-            <% } else{ %>
+            <% } else{ console.log(user.profilePicture);%>
                 <% if (user.profilePicture.length<10) { %>
                     <img src="/static/<%= user.profilePicture %>"  title="picture">
                 <% } else{ %>
-                    <img src="<%=user.profilePicture%>"  title="picture">
+                    <img src="/static/<%=user.profilePicture%>"  title="picture">
                 <% } %>
             <!-- <a href="" class="navbar"> -->
                     <div class="dropdownContent account_dropdown">

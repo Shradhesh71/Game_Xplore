@@ -4,7 +4,7 @@ const { createTokenForUser } = require("../services/authentication");
 
 // const friendName = {
 //     name:String
-// };
+// }; 
 
 const userSchema =  new Schema(
     {

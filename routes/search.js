@@ -3,16 +3,18 @@ const router = Router();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const { default: axios } = require("axios");
+require("dotenv").config();
 
 router.use(bodyParser.json());
 router.use(cors());
 
 router.post("/game", async (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   const { gamen } = req.body;
+  const token = process.env.AUTHORIZATION_GAME;
   const headers = {
-    "Client-ID": "hp48e43i91iisl72by8u6zdbge0vnc",
-    Authorization: `Bearer jz59r1zny81xu2ff78bco9binsayb9`,
+    "Client-ID": process.env.CLIENT_ID_GAME,
+    Authorization: `Bearer ${token}`,
     Accept: "application/json",
   };
   let gameData;
@@ -23,10 +25,11 @@ router.post("/game", async (req, res) => {
       headers,
     })
     .then((res) => {
-      //   console.log(res.data);
+      // console.log(res.data);
       gameData = res.data;
       console.log("----------------------------------------------------");
-      // console.log(gameData[0].name);
+      console.log("Video name\n");
+      console.log(gameData[0]);
     })
     .catch((err) => console.error(err));
   // console.log(gameData[0].similar_games);
@@ -41,6 +44,9 @@ router.post("/game", async (req, res) => {
     theme: gameData[0].themes,
     download: gameData[0].websites,
     company: gameData[0].involved_companies,
+    storyline: gameData[0].storyline,
+    screenshots: gameData[0].screenshots,
+    videos: gameData[0].videos,
   });
 });
 

@@ -15,6 +15,8 @@ const userRoute = require("./routes/user");
 const GoogleRoute = require("./routes/googleAuth");
 const searchRoute = require("./routes/search");
 const friendchat = require("./routes/friendchat");
+const football = require("./routes/football");
+const footplayer = require("./routes/footPlayer");
 
 const session = require("express-session");
 const passport = require("passport");
@@ -35,7 +37,7 @@ const multer = require("multer");
 
 mongoose
   .connect(
-    "mongodb+srv://shradesh71:newone71@cluster0.4tegtua.mongodb.net/gameusers?retryWrites=true"
+    "mongodb+srv://shradesh71:newone71@cluster0.4tegtua.mongodb.net/gameusers?retryWrites=true",
   )
   .then(() => {
     console.warn("connect...");
@@ -107,13 +109,13 @@ app.get("/", async (req, res) => {
     gameName1: gameData[1].name,
     gameName2: gameData[2].name,
     // gameName3: gameData[3].name,
-    gameweb0:gameData[0].websites[0].url,
-    gameweb1:gameData[1].websites[0].url,
-    gameweb2:gameData[2].websites[0].url,
+    gameweb0: gameData[0].websites[0].url,
+    gameweb1: gameData[1].websites[0].url,
+    gameweb2: gameData[2].websites[0].url,
     // gameweb3:gameData[3].websites[0].url,
-    gameyou0:gameData[0].videos[0].video_id,
-    gameyou1:gameData[1].videos[0].video_id,
-    gameyou2:gameData[2].videos[0].video_id,
+    gameyou0: gameData[0].videos[0].video_id,
+    gameyou1: gameData[1].videos[0].video_id,
+    gameyou2: gameData[2].videos[0].video_id,
     // gameyou3:gameData[3].videos[0].video_id,
   });
   console.log("Sent: Main_F Page");
@@ -137,6 +139,8 @@ app.use("/user", userRoute);
 app.use("/auth", GoogleRoute);
 app.use("/search", searchRoute);
 app.use("/friend", friendchat);
+app.use("/football", football);
+app.use("/footplayer", footplayer);
 
 // app.get('/login',(req, res) =>{
 //     res.status(200).render("login")
@@ -265,7 +269,7 @@ const storage = multer.diskStorage({
   filename: (req, file, callback) => {
     callback(
       null,
-      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname),
     ); // for file extension
   },
 });
