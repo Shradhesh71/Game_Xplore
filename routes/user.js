@@ -1,5 +1,6 @@
 const Gameuser = require("../models/user");
 const { Router } = require("express");
+const { main } = require("./nodemailer");
 
 const router = Router();
 
@@ -47,6 +48,7 @@ router.get("/profile/:id", async (req, res) => {
   }
 });
 
+
 router.post("/login", async (req, res) => {
   console.log("login request", req.body);
   const { email, password } = req.body;
@@ -74,7 +76,7 @@ router.post("/signup", async (req, res) => {
 router.post("/avatars/:id", async (req, res) => {
   try {
     await Gameuser.findOneAndUpdate({ _id: req.params.id }, {});
-    console.log("Updated avatar")
+    console.log("Updated avatar");
   } catch (e) {
     console.log(e);
     return res.redirect("/error");

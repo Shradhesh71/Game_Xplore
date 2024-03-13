@@ -17,6 +17,7 @@ const searchRoute = require("./routes/search");
 const friendchat = require("./routes/friendchat");
 const football = require("./routes/football");
 const footplayer = require("./routes/footPlayer");
+const forward = require("./routes/forward");
 
 const session = require("express-session");
 const passport = require("passport");
@@ -141,6 +142,7 @@ app.use("/search", searchRoute);
 app.use("/friend", friendchat);
 app.use("/football", football);
 app.use("/footplayer", footplayer);
+app.use("/forward", forward);
 
 // app.get('/login',(req, res) =>{
 //     res.status(200).render("login")

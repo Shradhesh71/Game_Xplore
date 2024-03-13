@@ -29,7 +29,7 @@ router.post("/game", async (req, res) => {
       gameData = res.data;
       console.log("----------------------------------------------------");
       console.log("Video name\n");
-      console.log(gameData[0]);
+      // console.log(gameData[0]);
     })
     .catch((err) => console.error(err));
   // console.log(gameData[0].similar_games);

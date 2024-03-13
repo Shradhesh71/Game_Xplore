@@ -291,3 +291,9 @@ body {
   text-align: center;
   margin-top: 5px;
 }
+.img-fluid {
+  transition: all 0.6s ease;
+}
+.img-fluid:hover {
+  transform: scale(2.5);
+}
