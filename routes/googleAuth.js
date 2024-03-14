@@ -10,20 +10,19 @@ const passport = require("passport");
 router.use(
   session({
     //Save login session
-    secret: "ShradheshJain!!!",
+    secret: process.env.GOOGLE_SESSION_SECERT,
     resave: false,
     saveUninitialized: true,
   }),
 );
 
 const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
-// 1090320152959-g5jrcfu0ckfml59tonss7o65va7k1488.apps.googleusercontent.com
 passport.use(
   new GoogleStrategy(
     {
       clientID:
-        "1090320152959-g5jrcfu0ckfml59tonss7o65va7k1488.apps.googleusercontent.com",
-      clientSecret: "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",
+        process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECERT,
       callbackURL: "http://localhost:8000/auth/google/callback",
     },
     async function (req, res, accessToken, refreshToken, profile, done) {
