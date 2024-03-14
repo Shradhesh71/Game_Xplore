@@ -4,6 +4,7 @@ const path = require("path");
 const fs = require("fs");
 const port = process.env.PORT || 5000;
 const cookiePaser = require("cookie-parser");
+require("dotenv").config();
 const mongoose = require("mongoose");
 const {
   checkForAuthenticationCookie,
@@ -38,7 +39,7 @@ const multer = require("multer");
 
 mongoose
   .connect(
-    "mongodb+srv://shradesh71:newone71@cluster0.4tegtua.mongodb.net/gameusers?retryWrites=true",
+    process.env.MONGO_URL,
   )
   .then(() => {
     console.warn("connect...");
@@ -82,8 +83,8 @@ const countrycodes = [];
 //   fs.mkdirSync(uploadDirectory);
 // };
 const headers = {
-  "Client-ID": "hp48e43i91iisl72by8u6zdbge0vnc",
-  Authorization: `Bearer jz59r1zny81xu2ff78bco9binsayb9`,
+  "Client-ID": process.env.CLIENT_ID_GAME,
+  Authorization: `Bearer ${process.env.AUTHORIZATION_GAME}`,
   Accept: "application/json",
 };
 const gameUrl = `https://api.igdb.com/v4/games?search=valorant&limit=5&fields=videos.name,videos.video_id,screenshots.image_id,screenshots.url,cover.image_id,cover.animated,websites.url,name,rating,cover.url,url`;

@@ -54,12 +54,12 @@ router.post("/login", async (req, res) => {
   const { email, password } = req.body;
   try {
     const token = await Gameuser.matchPasswordAndGenerateToken(email, password);
-
+ 
     return res.cookie("token", token).redirect("/");
   } catch (error) {
     return res.render("login", {
       error: "Incorrect Email or Password",
-    });
+    },console.log(error));
   }
 });
 

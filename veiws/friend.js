@@ -1,8 +1,8 @@
-const search = document.getElementById('search');
+// const search = document.getElementById('search');
 
-search.addEventListener('search', (e) =>{
-//     e.preventDefault();
-});
+// search.addEventListener('search', (e) =>{
+// //     e.preventDefault();
+// });
 
 // const socket = io();
 // // const sendbtn =  document.getElementById("sendbtn");
@@ -54,12 +54,11 @@ search.addEventListener('search', (e) =>{
 //             window.scrollTo(0, document.body.scrollHeight);
 //         });
 
-
 // document.addEventListener("DOMContentLoaded", function () {
 //     const chatBox = document.getElementById("chat-box");
 //     const messageInput = document.getElementById("message-input");
 //     const sendButton = document.getElementById("send-button");
-  
+
 //     sendButton.addEventListener("click", function () {
 //       const message = messageInput.value;
 //       if (message.trim() !== "") {
@@ -68,7 +67,7 @@ search.addEventListener('search', (e) =>{
 //         // You can add logic here to simulate responses from the other side.
 //       }
 //     });
-  
+
 //     function addMessage(sender, text, isUser) {
 //       const messageDiv = document.createElement("div");
 //       messageDiv.classList.add("message", isUser ? "user" : "opponent");
@@ -76,4 +75,55 @@ search.addEventListener('search', (e) =>{
 //       chatBox.appendChild(messageDiv);
 //     }
 //   });
-  
+
+// front
+//  <script>
+//       const socket = io();
+//       const sendBtn = document.getElementById("sendBtn");
+//       const messageInput = document.getElementById("inputmessage");
+//       const allMessages = document.getElementById("messages");
+
+//       socket.on("message", (message) => {
+//         const p = document.createElement("div");
+//         p.innerText = message;
+//         allMessages.appendChild(p);
+//       });
+
+//       sendBtn.addEventListener("click", (e) => {
+//         const message = messageInput.value;
+//         console.log(message);
+//         socket.emit("user-message", message);
+//       });
+
+//         const socket = io();
+//         // const sendbtn =  document.getElementById("sendbtn");
+// const messageinput = document.getElementById("inputmessage");
+// const allmessages = document.getElementById("messages");
+// const form = document.getElementById('formMain');
+// const sendBtn = document.getElementById('sendBtn');
+
+// console.log("main: ");
+
+//         // for
+//         sendBtn.addEventListener("click", (e) => {
+//             const message = messageinput.value;
+//             console.log(message);
+//             socket.emit("user-message", message);
+//         });
+//         socket.on('message', message=> {
+//             console.log("socket: ", message);
+//             const item = document.createElement('div');
+//             item.innerHTML = `<div class="messageRight">${message}</div>`;
+//             allmessages.appendChild(item);
+//             // window.scrollTo(0, document.body.scrollHeight);
+//         });
+// </script>
+
+const socket = io();
+
+const form = document.getElementById("formMain");
+const messageInput = document.getElementById("inputmessage");
+const messageDiv = document.getElementById("messages");
+
+const name = prompt("Enter your name");
+socket.emit("new-user-joined", name);

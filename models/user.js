@@ -61,7 +61,7 @@ userSchema.pre("save", function(next){
     this.password = hashpassword;
     next();
 });
-
+ 
 userSchema.static("matchPasswordAndGenerateToken", async function(email,password){
     const user = await this.findOne({email});
     if(!user) throw new Error("Couldn't find User");
