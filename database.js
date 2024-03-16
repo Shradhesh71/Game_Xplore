@@ -4,7 +4,7 @@ const findOrCreate = require('mongoose-findorcreate');
 // const {userSchema} = require("./database.js");
 
 
-// mongoose.connect('mongodb+srv://shradesh71:newone71@cluster0.4tegtua.mongodb.net/gameusers?retryWrites=true')
+// mongoose.connect(process.env.MONGO_URL)
 //     .then(()=>{
 //         console.warn("connect...");
 //     })
