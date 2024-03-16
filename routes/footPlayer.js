@@ -7,13 +7,13 @@ router.use(bodyParser.json());
 router.use(cors());
 
 const headers = {
-  "X-AUTH-TOKEN": `0dd0fe1c-a22b-4944-873b-773747e2ce27`,
+  "X-AUTH-TOKEN": process.env.FOOTBALL_TOKEN,
   Accept: "image/png",
 };
 
 router.get("/:id", async function (req, res) {
   const id = req.params.id;
-  const url = `https://futdb.app/api/players/${id}/image`;
+  const url = `${process.env.FOOTBALL_URL}/players/${id}/image`;
 
   await axios
     .get(url, {

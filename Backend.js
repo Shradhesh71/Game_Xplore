@@ -38,9 +38,7 @@ const multer = require("multer");
 // const mongostore = require("connect-mongo");
 
 mongoose
-  .connect(
-    process.env.MONGO_URL,
-  )
+  .connect(process.env.MONGO_URL)
   .then(() => {
     console.warn("connect...");
   })
@@ -59,10 +57,10 @@ app.use(cookiePaser());
 app.use(checkForAuthenticationCookie("token"));
 
 // app.use(session({   //Save login session
-//   secret: "ShradheshJain!!!",
+//   secret: process.env.GOOGLE_SESSION_SECERT,
 //   resave: false,
 //   saveUninitialized: true,
-//   store: mongostore.create({ mongoUrl:"mongodb+srv://shradesh71:newone71@cluster0.4tegtua.mongodb.net/gameusers?retryWrites=true",collectionName: "sessions" }),
+//   store: mongostore.create({ mongoUrl:process.env.MONGO_URL,collectionName: "sessions" }),
 //   cookie:{
 //     maxAge: 1000*60*60 // 1 hours
 //   }
@@ -87,7 +85,7 @@ const headers = {
   Authorization: `Bearer ${process.env.AUTHORIZATION_GAME}`,
   Accept: "application/json",
 };
-const gameUrl = `https://api.igdb.com/v4/games?search=valorant&limit=5&fields=videos.name,videos.video_id,screenshots.image_id,screenshots.url,cover.image_id,cover.animated,websites.url,name,rating,cover.url,url`;
+const gameUrl = `${process.env.API_URL}?search=valorant&limit=5&fields=videos.name,videos.video_id,screenshots.image_id,screenshots.url,cover.image_id,cover.animated,websites.url,name,rating,cover.url,url`;
 
 app.get("/", async (req, res) => {
   await axios
@@ -183,7 +181,7 @@ app.get("/useralready", (req, res) => {
 // app.get("/Game",(req,res) =>{
 //   res.render("about_game.ejs");
 // });
-const apiKey = "227ead613574b24dba4bbad59eb633dabdc43a2b";
+const apiKey = process.env.GAINT_API;
 
 // app.post("/game", async (req, res) => {
 //   console.log(req.body);

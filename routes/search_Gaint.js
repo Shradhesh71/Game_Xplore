@@ -4,7 +4,7 @@
 
 // const router = Router();
 
-// const apiKey = "227ead613574b24dba4bbad59eb633dabdc43a2b";
+// const apiKey = process.env.GAINT_API;
 
 // router.post("/game", async (req, res) => {
 //   const { gamen } = req.body;
