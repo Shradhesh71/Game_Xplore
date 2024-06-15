@@ -27,8 +27,8 @@ const football = require("./routes/football");
 const footplayer = require("./routes/footPlayer");
 const forward = require("./routes/forward");
 
-// const session = require("express-session");
-// const passport = require("passport");
+const session = require("express-session");
+const passport = require("passport");
 
 // const {connectmongoose, Gameuser} = require("./database.js");
 // const {intinalizingPassport} = require("./passport.js");
