@@ -9,9 +9,11 @@ function checkForAuthenticationCookie(cookieName) {
   
       try {
         const userPayload = validateToken(tokenCookieValue);
-        // console.log("check for auth cook: ",userPayload)
+        // console.log("check for auth cookie: ",userPayload)
         req.user = userPayload;
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
   
       return next();
     };

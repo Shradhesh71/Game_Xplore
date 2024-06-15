@@ -5,14 +5,21 @@ const fs = require("fs");
 const port = process.env.PORT || 5000;
 const cookiePaser = require("cookie-parser");
 require("dotenv").config();
-const mongoose = require("mongoose");
+const { connect } = require("./db/connect");
+const {headers, gameUrlHome} = require("./controllers/searchApi")
 const {
   checkForAuthenticationCookie,
 } = require("./middlewares/authentication");
+const axios = require("axios");
 
 // const Gameuser = require("../models/user");
 
+connect();
+
 const userRoute = require("./routes/user");
+const login = require("./routes/login");
+const register = require("./routes/register");
+const profile = require("./routes/profile");
 const GoogleRoute = require("./routes/googleAuth");
 const searchRoute = require("./routes/search");
 const friendchat = require("./routes/friendchat");
@@ -20,13 +27,12 @@ const football = require("./routes/football");
 const footplayer = require("./routes/footPlayer");
 const forward = require("./routes/forward");
 
-const session = require("express-session");
-const passport = require("passport");
+// const session = require("express-session");
+// const passport = require("passport");
 
 // const {connectmongoose, Gameuser} = require("./database.js");
 // const {intinalizingPassport} = require("./passport.js");
 
-const axios = require("axios");
 // const passportlocalmongoose = require('passport-local-mongoose');
 // const GoogleStrategy = require('passport-google-oauth20').Strategy;
 // const findOrCreate = require('mongoose-findorcreate');
@@ -36,15 +42,6 @@ const axios = require("axios");
 // const {storage,uploadfile} = require("./multer.js");
 const multer = require("multer");
 // const mongostore = require("connect-mongo");
-
-mongoose
-  .connect(process.env.MONGO_URL)
-  .then(() => {
-    console.warn("connect...");
-  })
-  .catch((error) => {
-    console.log(error);
-  });
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views")); // set the veiw directory
@@ -80,26 +77,15 @@ const countrycodes = [];
 // if (!fs.existsSync(uploadDirectory)) {
 //   fs.mkdirSync(uploadDirectory);
 // };
-const headers = {
-  "Client-ID": process.env.CLIENT_ID_GAME,
-  Authorization: `Bearer ${process.env.AUTHORIZATION_GAME}`,
-  Accept: "application/json",
-};
-const gameUrl = `${process.env.API_URL}?search=valorant&limit=5&fields=videos.name,videos.video_id,screenshots.image_id,screenshots.url,cover.image_id,cover.animated,websites.url,name,rating,cover.url,url`;
 
 app.get("/", async (req, res) => {
   await axios
-    .get(gameUrl, {
+    .get(gameUrlHome, {
       headers,
     })
     .then((res) => {
-      //   console.log(res.data);   1.websites[0].url
       gameData = res.data;
       console.log("----------------------------------------------------");
-      // console.log(gameData[0].videos[0].video_id);
-      // console.log(gameData[1].videos[0].video_id);//  1.videos[0].video_id
-      // console.log(gameData[2].videos[0].video_id);
-      // console.log(gameData[1].websites[0].url);
     })
     .catch((err) => console.error(err));
 
@@ -136,22 +122,19 @@ app.get("/error", async (req, res) => {
 // });
 
 app.use("/user", userRoute);
+app.use("/login", login);
+app.use("/register", register);
 app.use("/auth", GoogleRoute);
 app.use("/search", searchRoute);
 app.use("/friend", friendchat);
 app.use("/football", football);
 app.use("/footplayer", footplayer);
 app.use("/forward", forward);
+app.use("/profile", profile);
 
-// app.get('/login',(req, res) =>{
-//     res.status(200).render("login")
-//     console.log("Sent: Login page");
-// });
 
-// app.get('/user/register',(req,res) =>{
-//   res.status(200).render("register");
-//   console.log("Sent: Register Page");
-// });
+
+
 
 // app.get('/register_last',(req,res) =>{
 // //   if(countrycodes.length==0){
@@ -163,11 +146,6 @@ app.use("/forward", forward);
 // //   }
 // // });
 
-// app.get("/avatar/:gxid",(req, res) =>{
-//   const gxid = _.capitalize(req.params.gxid);
-//   console.log("Got avatar gxid: " + gxid);
-//   res.render("avatar",{"gxid": gxid});
-// });
 
 app.get("/studios", (req, res) => {
   res.render("studios");
@@ -178,9 +156,7 @@ app.get("/useralready", (req, res) => {
   res.render("userAlready");
 });
 
-// app.get("/Game",(req,res) =>{
-//   res.render("about_game.ejs");
-// });
+
 const apiKey = process.env.GAINT_API;
 
 // app.post("/game", async (req, res) => {
@@ -219,7 +195,7 @@ const apiKey = process.env.GAINT_API;
 app.post("/register", (req, res) => {
   countrycodes.push(req.body.country);
   console.log("Request country Code: ", req.body.country);
-  res.status(200).redirect("/user/signup");
+  res.status(200).redirect("/register/signup");
   console.log("Sent: Register_1 Page Post Request");
 });
 
